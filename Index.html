@@ -1,0 +1,3814 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Northern Ireland GP Prescription Spending April 2013 - May 2016</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css');
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>
+        Northern Ireland GP Prescriptions by Amount of money spent
+    </h1>
+    <h2>
+        April 2013 - May 2016
+    </h2>
+    <h3>
+        Total Spent £ <!--ko text: totalSpent().toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') --><!-- /ko -->
+    </h3>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Position</th>
+                <th>Name</th>
+                <th>Cost (£)</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach:topDrugsNI">
+            <tr>
+                <td data-bind="text:$index()+1"></td>
+                <td data-bind="text:name"></td>
+                <td data-bind="text:amount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')"></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+<script>
+    function VM() {
+        var self = this;
+
+        self.topDrugsNI = [{
+            name: "Pregabalin",
+            amount: 56035787.40
+        }, {
+            name: "Fluticasone + Salmeterol",
+            amount: 38468894.53
+        }, {
+            name: "Budesonide + Formoterol",
+            amount: 26548219.35
+        }, {
+            name: "Tiotropium",
+            amount: 21212877.04
+        }, {
+            name: "Buprenorphine",
+            amount: 19757893.92
+        }, {
+            name: "Co-codamol",
+            amount: 16101056.43
+        }, {
+            name: "Rosuvastatin",
+            amount: 15127761.06
+        }, {
+            name: "Temazepam",
+            amount: 12971923.11
+        }, {
+            name: "Tramadol",
+            amount: 12180549.62
+        }, {
+            name: "Quetiapine",
+            amount: 11757554.42
+        }, {
+            name: "Lamotrigine",
+            amount: 11493935.80
+        }, {
+            name: "Levothyroxine",
+            amount: 11280477.53
+        }, {
+            name: "Mesalazine",
+            amount: 11014413.38
+        }, {
+            name: "Duloxetine",
+            amount: 10546896.76
+        }, {
+            name: "Oxycodone",
+            amount: 10280270.70
+        }, {
+            name: "Solifenacin",
+            amount: 10218398.69
+        }, {
+            name: "Insulin aspart",
+            amount: 9917253.82
+        }, {
+            name: "Insulin glargine",
+            amount: 9690672.64
+        }, {
+            name: "Levetiracetam",
+            amount: 9346100.42
+        }, {
+            name: "Metformin",
+            amount: 8801343.02
+        }, {
+            name: "Omeprazole",
+            amount: 8248818.34
+        }, {
+            name: "Ezetimibe",
+            amount: 8049656.63
+        }, {
+            name: "Salbutamol",
+            amount: 7793346.63
+        }, {
+            name: "Fentanyl",
+            amount: 7496495.94
+        }, {
+            name: "Beclometasone",
+            amount: 7255835.55
+        }, {
+            name: "Liraglutide",
+            amount: 7092198.50
+        }, {
+            name: "Insulin aspart biphasic",
+            amount: 6948402.74
+        }, {
+            name: "Tacrolimus",
+            amount: 6916431.64
+        }, {
+            name: "Enoxaparin",
+            amount: 6677836.53
+        }, {
+            name: "Venlafaxine",
+            amount: 6554038.28
+        }, {
+            name: "Apixaban",
+            amount: 6522753.76
+        }, {
+            name: "Hydrocortisone",
+            amount: 6369585.30
+        }, {
+            name: "Paracetamol",
+            amount: 6302716.61
+        }, {
+            name: "Lidocaine",
+            amount: 6282588.37
+        }, {
+            name: "Nebivolol",
+            amount: 6275335.10
+        }, {
+            name: "Sitagliptin",
+            amount: 5938946.37
+        }, {
+            name: "Calcipotriol + Betamethasone",
+            amount: 5872718.99
+        }, {
+            name: "Goserelin",
+            amount: 5793889.81
+        }, {
+            name: "Atorvastatin",
+            amount: 5762453.48
+        }, {
+            name: "Aripiprazole",
+            amount: 5420386.92
+        }, {
+            name: "Rivaroxaban",
+            amount: 5402154.67
+        }, {
+            name: "Memantine",
+            amount: 5342679.96
+        }, {
+            name: "Esomeprazole",
+            amount: 5308569.30
+        }, {
+            name: "Isosorbide mononitrate",
+            amount: 5203396.68
+        }, {
+            name: "Propranolol",
+            amount: 5148853.20
+        }, {
+            name: "Methylphenidate",
+            amount: 5139740.40
+        }, {
+            name: "Risperidone",
+            amount: 4855478.53
+        }, {
+            name: "Simvastatin",
+            amount: 4779100.79
+        }, {
+            name: "Colecalciferol + Calcium carbonate",
+            amount: 4724116.89
+        }, {
+            name: "Lansoprazole",
+            amount: 4566581.39
+        }, {
+            name: "Sertraline",
+            amount: 4542030.02
+        }, {
+            name: "Tadalafil",
+            amount: 4531571.63
+        }, {
+            name: "Sodium valproate",
+            amount: 4446750.50
+        }, {
+            name: "Somatropin",
+            amount: 4407045.32
+        }, {
+            name: "Insulin detemir",
+            amount: 4360356.55
+        }, {
+            name: "Mycophenolate mofetil",
+            amount: 4262546.44
+        }, {
+            name: "Naproxen",
+            amount: 4111600.31
+        }, {
+            name: "Aspirin",
+            amount: 3786922.49
+        }, {
+            name: "Escitalopram",
+            amount: 3742760.59
+        }, {
+            name: "Prednisolone",
+            amount: 3739812.93
+        }, {
+            name: "Diclofenac sodium",
+            amount: 3714816.26
+        }, {
+            name: "Etoricoxib",
+            amount: 3709766.38
+        }, {
+            name: "Bisoprolol",
+            amount: 3646944.16
+        }, {
+            name: "Nitrofurantoin",
+            amount: 3530708.25
+        }, {
+            name: "Lanreotide",
+            amount: 3500164.01
+        }, {
+            name: "Sodium chloride",
+            amount: 3466709.30
+        }, {
+            name: "Carbimazole",
+            amount: 3418766.48
+        }, {
+            name: "Nicotine",
+            amount: 3331033.34
+        }, {
+            name: "Fluticasone",
+            amount: 3321623.18
+        }, {
+            name: "Tamsulosin + Dutasteride",
+            amount: 3295831.66
+        }, {
+            name: "Paliperidone",
+            amount: 3153777.15
+        }, {
+            name: "Ramipril",
+            amount: 3126835.69
+        }, {
+            name: "Ibuprofen",
+            amount: 3097815.43
+        }, {
+            name: "Dutasteride",
+            amount: 2977165.18
+        }, {
+            name: "Carbocisteine",
+            amount: 2936764.45
+        }, {
+            name: "Fesoterodine",
+            amount: 2909579.54
+        }, {
+            name: "Phenytoin sodium",
+            amount: 2884231.77
+        }, {
+            name: "Maize starch",
+            amount: 2873757.67
+        }, {
+            name: "Eplerenone",
+            amount: 2817190.27
+        }, {
+            name: "Tapentadol",
+            amount: 2755529.56
+        }, {
+            name: "Doxazosin",
+            amount: 2725213.47
+        }, {
+            name: "Phenoxymethylpenicillin",
+            amount: 2719839.44
+        }, {
+            name: "Eicosapentaenoic acid + Docosahexaenoic acid",
+            amount: 2698307.54
+        }, {
+            name: "Gliclazide",
+            amount: 2659367.41
+        }, {
+            name: "Octreotide",
+            amount: 2646165.91
+        }, {
+            name: "Desogestrel",
+            amount: 2624879.07
+        }, {
+            name: "Budesonide",
+            amount: 2621217.36
+        }, {
+            name: "Linagliptin",
+            amount: 2612965.30
+        }, {
+            name: "Estradiol",
+            amount: 2577734.46
+        }, {
+            name: "Gabapentin",
+            amount: 2556668.98
+        }, {
+            name: "Diazepam",
+            amount: 2535481.05
+        }, {
+            name: "Fluoxetine",
+            amount: 2509121.31
+        }, {
+            name: "Tolterodine",
+            amount: 2434960.83
+        }, {
+            name: "Galantamine",
+            amount: 2425419.19
+        }, {
+            name: "Ondansetron",
+            amount: 2420006.68
+        }, {
+            name: "Lacosamide",
+            amount: 2365011.37
+        }, {
+            name: "Adrenaline",
+            amount: 2359451.07
+        }, {
+            name: "Amlodipine",
+            amount: 2334917.28
+        }, {
+            name: "Methocarbamol",
+            amount: 2230380.94
+        }, {
+            name: "Methotrexate",
+            amount: 2224621.26
+        }, {
+            name: "Montelukast",
+            amount: 2214845.22
+        }, {
+            name: "Pancreatin",
+            amount: 2212873.97
+        }, {
+            name: "Amoxicillin",
+            amount: 2195918.76
+        }, {
+            name: "Topiramate",
+            amount: 2184190.41
+        }, {
+            name: "Diltiazem",
+            amount: 2161024.47
+        }, {
+            name: "Pramipexole",
+            amount: 2141656.57
+        }, {
+            name: "Nifedipine",
+            amount: 2135449.80
+        }, {
+            name: "Carbamazepine",
+            amount: 2122298.30
+        }, {
+            name: "Liquid paraffin + Isopropyl myristate",
+            amount: 2121726.66
+        }, {
+            name: "Ethinylestradiol + Drospirenone",
+            amount: 2104062.32
+        }, {
+            name: "Flucloxacillin",
+            amount: 2081340.51
+        }, {
+            name: "Dapagliflozin",
+            amount: 2065987.30
+        }, {
+            name: "Dabigatran etexilate",
+            amount: 2044906.67
+        }, {
+            name: "Irbesartan + Hydrochlorothiazide",
+            amount: 2042667.90
+        }, {
+            name: "Tamsulosin",
+            amount: 2036401.55
+        }, {
+            name: "Cinacalcet",
+            amount: 2020058.83
+        }, {
+            name: "Rasagiline",
+            amount: 2003118.99
+        }, {
+            name: "Amitriptyline",
+            amount: 2002415.35
+        }, {
+            name: "Oxycodone + Naloxone",
+            amount: 1995756.49
+        }, {
+            name: "Terbutaline",
+            amount: 1977856.98
+        }, {
+            name: "Mometasone",
+            amount: 1973351.41
+        }, {
+            name: "Citalopram",
+            amount: 1972210.65
+        }, {
+            name: "Nicorandil",
+            amount: 1962900.08
+        }, {
+            name: "Dexamethasone",
+            amount: 1962064.95
+        }, {
+            name: "Insulin lispro",
+            amount: 1929319.02
+        }, {
+            name: "Warfarin",
+            amount: 1928181.58
+        }, {
+            name: "Morphine",
+            amount: 1913965.65
+        }, {
+            name: "Rotigotine",
+            amount: 1902984.71
+        }, {
+            name: "Ivabradine",
+            amount: 1899612.25
+        }, {
+            name: "Clopidogrel",
+            amount: 1899042.12
+        }, {
+            name: "Benzoyl peroxide + Clindamycin",
+            amount: 1883659.97
+        }, {
+            name: "Alverine",
+            amount: 1870302.61
+        }, {
+            name: "Piroxicam",
+            amount: 1868657.33
+        }, {
+            name: "Ticagrelor",
+            amount: 1860801.58
+        }, {
+            name: "Mebeverine",
+            amount: 1830646.74
+        }, {
+            name: "Trazodone",
+            amount: 1782729.15
+        }, {
+            name: "Perindopril erbumine",
+            amount: 1769471.06
+        }, {
+            name: "Beclometasone + Formoterol",
+            amount: 1765633.62
+        }, {
+            name: "Ciclosporin",
+            amount: 1764733.76
+        }, {
+            name: "Sildenafil",
+            amount: 1757078.39
+        }, {
+            name: "Oxybutynin",
+            amount: 1742226.77
+        }, {
+            name: "Cyclizine",
+            amount: 1741411.26
+        }, {
+            name: "Rifaximin",
+            amount: 1734153.22
+        }, {
+            name: "Buspirone",
+            amount: 1691730.38
+        }, {
+            name: "Triptorelin",
+            amount: 1691691.18
+        }, {
+            name: "Zonisamide",
+            amount: 1675505.04
+        }, {
+            name: "Sumatriptan",
+            amount: 1674628.32
+        }, {
+            name: "Insulin lispro biphasic",
+            amount: 1668382.48
+        }, {
+            name: "Mirtazapine",
+            amount: 1657282.23
+        }, {
+            name: "White soft paraffin + Liquid paraffin",
+            amount: 1641580.62
+        }, {
+            name: "Bendroflumethiazide",
+            amount: 1636677.80
+        }, {
+            name: "Orlistat",
+            amount: 1616680.80
+        }, {
+            name: "Atomoxetine",
+            amount: 1607322.63
+        }, {
+            name: "Thiamine",
+            amount: 1599131.66
+        }, {
+            name: "Mirabegron",
+            amount: 1575110.11
+        }, {
+            name: "Varenicline",
+            amount: 1572611.04
+        }, {
+            name: "Candesartan",
+            amount: 1548322.86
+        }, {
+            name: "Apomorphine",
+            amount: 1533375.47
+        }, {
+            name: "Lymecycline",
+            amount: 1531397.98
+        }, {
+            name: "Salmeterol",
+            amount: 1531336.75
+        }, {
+            name: "Felodipine",
+            amount: 1512920.82
+        }, {
+            name: "Lactulose",
+            amount: 1496076.97
+        }, {
+            name: "Irbesartan",
+            amount: 1486793.69
+        }, {
+            name: "Lercanidipine",
+            amount: 1468861.04
+        }, {
+            name: "Ranolazine",
+            amount: 1421270.54
+        }, {
+            name: "Leuprorelin",
+            amount: 1394342.92
+        }, {
+            name: "Etonogestrel",
+            amount: 1380012.19
+        }, {
+            name: "Rivastigmine",
+            amount: 1357382.22
+        }, {
+            name: "Azithromycin",
+            amount: 1357041.57
+        }, {
+            name: "Saxagliptin",
+            amount: 1353795.46
+        }, {
+            name: "Nortriptyline",
+            amount: 1345708.49
+        }, {
+            name: "Furosemide",
+            amount: 1320913.89
+        }, {
+            name: "Alfuzosin",
+            amount: 1318821.95
+        }, {
+            name: "Fluticasone + Formoterol",
+            amount: 1312598.66
+        }, {
+            name: "Zopiclone",
+            amount: 1304350.23
+        }, {
+            name: "Celecoxib",
+            amount: 1286409.37
+        }, {
+            name: "Peppermint oil",
+            amount: 1245343.06
+        }, {
+            name: "Melatonin",
+            amount: 1242795.67
+        }, {
+            name: "Ursodeoxycholic acid",
+            amount: 1241445.12
+        }, {
+            name: "Ranitidine",
+            amount: 1238637.14
+        }, {
+            name: "Clarithromycin",
+            amount: 1207591.98
+        }, {
+            name: "Olmesartan",
+            amount: 1175931.38
+        }, {
+            name: "Senna",
+            amount: 1173773.05
+        }, {
+            name: "Exenatide",
+            amount: 1160698.23
+        }, {
+            name: "Liothyronine",
+            amount: 1147580.92
+        }, {
+            name: "Desmopressin",
+            amount: 1146770.93
+        }, {
+            name: "Liquid paraffin",
+            amount: 1143297.87
+        }, {
+            name: "Sodium alginate + Potassium bicarbonate",
+            amount: 1140310.27
+        }, {
+            name: "Cetirizine",
+            amount: 1136656.34
+        }, {
+            name: "Valproic acid",
+            amount: 1126294.88
+        }, {
+            name: "Olanzapine",
+            amount: 1118410.46
+        }, {
+            name: "Glyceryl trinitrate",
+            amount: 1113431.43
+        }, {
+            name: "Hydrocortisone + Miconazole",
+            amount: 1088618.97
+        }, {
+            name: "Ethinylestradiol + Levonorgestrel",
+            amount: 1075168.00
+        }, {
+            name: "Lisinopril",
+            amount: 1073222.60
+        }, {
+            name: "Trimethoprim",
+            amount: 1072888.39
+        }, {
+            name: "Bimatoprost + Timolol",
+            amount: 1066203.68
+        }, {
+            name: "Co-amoxiclav",
+            amount: 1050126.24
+        }, {
+            name: "Fexofenadine",
+            amount: 1046768.61
+        }, {
+            name: "Betamethasone",
+            amount: 1045778.44
+        }, {
+            name: "Doxycycline",
+            amount: 1039075.04
+        }, {
+            name: "Fluticasone + Vilanterol",
+            amount: 1029161.85
+        }, {
+            name: "Quinine sulphate",
+            amount: 1021297.95
+        }, {
+            name: "Hepatitis A + Typhoid vaccine",
+            amount: 1019991.10
+        }, {
+            name: "Calcipotriol",
+            amount: 1015633.75
+        }, {
+            name: "Nicotinamide + Riboflavine + Thiamine",
+            amount: 1008519.72
+        }, {
+            name: "Loperamide",
+            amount: 985458.49
+        }, {
+            name: "Levonorgestrel",
+            amount: 984241.37
+        }, {
+            name: "Latanoprost",
+            amount: 966665.14
+        }, {
+            name: "Agomelatine",
+            amount: 963365.60
+        }, {
+            name: "Fenofibrate micronised",
+            amount: 961010.56
+        }, {
+            name: "Dipyridamole",
+            amount: 956867.73
+        }, {
+            name: "Betamethasone + Fusidic acid",
+            amount: 940651.25
+        }, {
+            name: "Chlorpromazine",
+            amount: 929611.45
+        }, {
+            name: "Insulin isophane biphasic human",
+            amount: 926006.83
+        }, {
+            name: "Coal tar",
+            amount: 917513.34
+        }, {
+            name: "Indapamide",
+            amount: 912989.65
+        }, {
+            name: "Insulin glulisine",
+            amount: 912457.79
+        }, {
+            name: "Capsaicin",
+            amount: 906142.23
+        }, {
+            name: "Cilostazol",
+            amount: 897049.57
+        }, {
+            name: "Calcium carbonate + Sodium alginate + Sodium bicarbonate",
+            amount: 895496.70
+        }, {
+            name: "Digoxin",
+            amount: 879945.65
+        }, {
+            name: "Ropinirole",
+            amount: 878063.98
+        }, {
+            name: "Insulin degludec",
+            amount: 873633.60
+        }, {
+            name: "Carmellose",
+            amount: 872335.05
+        }, {
+            name: "Cinchocaine + Hydrocortisone",
+            amount: 864207.08
+        }, {
+            name: "Sodium hyaluronate",
+            amount: 844899.52
+        }, {
+            name: "Ascorbic acid",
+            amount: 837213.22
+        }, {
+            name: "Acamprosate",
+            amount: 835354.80
+        }, {
+            name: "Folic acid",
+            amount: 830902.63
+        }, {
+            name: "Colecalciferol",
+            amount: 829096.80
+        }, {
+            name: "Co-dydramol",
+            amount: 827393.03
+        }, {
+            name: "Metronidazole",
+            amount: 820832.85
+        }, {
+            name: "Prochlorperazine",
+            amount: 816723.21
+        }, {
+            name: "Carbidopa + Levodopa + Entacapone",
+            amount: 809925.55
+        }, {
+            name: "Sodium picosulfate",
+            amount: 809584.45
+        }, {
+            name: "Colistin",
+            amount: 807032.77
+        }, {
+            name: "Prasugrel",
+            amount: 799467.02
+        }, {
+            name: "Co-beneldopa",
+            amount: 799129.30
+        }, {
+            name: "Pravastatin",
+            amount: 796060.77
+        }, {
+            name: "Urea [13-C]",
+            amount: 790245.99
+        }, {
+            name: "Midazolam",
+            amount: 775519.55
+        }, {
+            name: "Sitagliptin + Metformin",
+            amount: 773984.98
+        }, {
+            name: "Clobetasone",
+            amount: 771411.65
+        }, {
+            name: "Aclidinium bromide",
+            amount: 767379.02
+        }, {
+            name: "Alendronic acid",
+            amount: 766648.52
+        }, {
+            name: "Pantoprazole",
+            amount: 763913.27
+        }, {
+            name: "Pioglitazone + Metformin",
+            amount: 755777.89
+        }, {
+            name: "Procyclidine",
+            amount: 753603.12
+        }, {
+            name: "Losartan",
+            amount: 752720.45
+        }, {
+            name: "Sulfasalazine",
+            amount: 748600.47
+        }, {
+            name: "Fusidic acid",
+            amount: 742383.62
+        }, {
+            name: "Baclofen",
+            amount: 740665.58
+        }, {
+            name: "Aciclovir",
+            amount: 730419.63
+        }, {
+            name: "Nystatin",
+            amount: 727433.19
+        }, {
+            name: "Ferrous fumarate",
+            amount: 726512.05
+        }, {
+            name: "Trandolapril",
+            amount: 726492.69
+        }, {
+            name: "Clobazam",
+            amount: 724543.82
+        }, {
+            name: "Risedronate sodium",
+            amount: 713581.72
+        }, {
+            name: "Benzydamine",
+            amount: 709925.32
+        }, {
+            name: "Tramadol + Paracetamol",
+            amount: 705531.34
+        }, {
+            name: "Betahistine",
+            amount: 701901.84
+        }, {
+            name: "Brinzolamide",
+            amount: 695783.56
+        }, {
+            name: "Vardenafil",
+            amount: 695729.41
+        }, {
+            name: "Allopurinol",
+            amount: 688241.25
+        }, {
+            name: "Hydrocortisone + Clotrimazole",
+            amount: 683327.45
+        }, {
+            name: "Fluticasone + Azelastine",
+            amount: 681619.41
+        }, {
+            name: "Modafinil",
+            amount: 679771.73
+        }, {
+            name: "Donepezil",
+            amount: 678818.08
+        }, {
+            name: "Timolol + Travoprost",
+            amount: 677495.84
+        }, {
+            name: "Clotrimazole",
+            amount: 675626.49
+        }, {
+            name: "Hyoscine butylbromide",
+            amount: 673928.87
+        }, {
+            name: "Erythromycin",
+            amount: 671298.86
+        }, {
+            name: "Paroxetine",
+            amount: 670681.17
+        }, {
+            name: "Colchicine",
+            amount: 670140.47
+        }, {
+            name: "Testosterone undecanoate",
+            amount: 661378.13
+        }, {
+            name: "Lisinopril + Hydrochlorothiazide",
+            amount: 655273.94
+        }, {
+            name: "Rizatriptan",
+            amount: 648990.08
+        }, {
+            name: "Hydroxocobalamin",
+            amount: 637655.34
+        }, {
+            name: "Testosterone",
+            amount: 633830.83
+        }, {
+            name: "Pioglitazone",
+            amount: 628396.30
+        }, {
+            name: "Etodolac",
+            amount: 626304.15
+        }, {
+            name: "Adapalene + Benzoyl peroxide",
+            amount: 622802.63
+        }, {
+            name: "Propylthiouracil",
+            amount: 621581.00
+        }, {
+            name: "Ispaghula husk",
+            amount: 620187.67
+        }, {
+            name: "Codeine",
+            amount: 620154.01
+        }, {
+            name: "Carbomer",
+            amount: 614316.09
+        }, {
+            name: "Valsartan",
+            amount: 613133.17
+        }, {
+            name: "Clonidine",
+            amount: 610591.43
+        }, {
+            name: "Hepatitis A vaccine",
+            amount: 610376.94
+        }, {
+            name: "Lisdexamfetamine",
+            amount: 609342.13
+        }, {
+            name: "Alimemazine",
+            amount: 604031.07
+        }, {
+            name: "Trimipramine",
+            amount: 603567.33
+        }, {
+            name: "Leflunomide",
+            amount: 599675.64
+        }, {
+            name: "Senna + Ispaghula",
+            amount: 595728.89
+        }, {
+            name: "Water",
+            amount: 595714.96
+        }, {
+            name: "Zolpidem",
+            amount: 593732.01
+        }, {
+            name: "Promethazine hydrochloride",
+            amount: 591912.78
+        }, {
+            name: "Dicycloverine",
+            amount: 591613.93
+        }, {
+            name: "Carob seed",
+            amount: 588495.46
+        }, {
+            name: "Chloramphenicol",
+            amount: 582318.62
+        }, {
+            name: "Dihydrocodeine",
+            amount: 580766.67
+        }, {
+            name: "Mercaptopurine",
+            amount: 578093.38
+        }, {
+            name: "Ethinylestradiol + Norgestimate",
+            amount: 576981.43
+        }, {
+            name: "Eflornithine",
+            amount: 576129.86
+        }, {
+            name: "Pizotifen",
+            amount: 575363.85
+        }, {
+            name: "Glycopyrronium",
+            amount: 574930.94
+        }, {
+            name: "Clonazepam",
+            amount: 563748.46
+        }, {
+            name: "Ibandronic acid",
+            amount: 558229.72
+        }, {
+            name: "Febuxostat",
+            amount: 554899.24
+        }, {
+            name: "Atenolol",
+            amount: 554261.98
+        }, {
+            name: "Darbepoetin alfa",
+            amount: 553612.62
+        }, {
+            name: "Hydrocortisone + Fusidic acid",
+            amount: 549812.41
+        }, {
+            name: "Imiquimod",
+            amount: 547109.64
+        }, {
+            name: "Trospium",
+            amount: 547034.59
+        }, {
+            name: "Bimatoprost",
+            amount: 546896.06
+        }, {
+            name: "Anastrozole",
+            amount: 536197.33
+        }, {
+            name: "Nitrazepam",
+            amount: 535771.76
+        }, {
+            name: "Perampanel",
+            amount: 531238.34
+        }, {
+            name: "Mefenamic acid",
+            amount: 530533.41
+        }, {
+            name: "Theophylline",
+            amount: 529734.89
+        }, {
+            name: "Ipratropium",
+            amount: 525232.50
+        }, {
+            name: "Tibolone",
+            amount: 521513.61
+        }, {
+            name: "Dosulepin",
+            amount: 518939.71
+        }, {
+            name: "Amorolfine",
+            amount: 518691.90
+        }, {
+            name: "Urea",
+            amount: 507327.36
+        }, {
+            name: "Prucalopride",
+            amount: 499197.64
+        }, {
+            name: "Ketoconazole",
+            amount: 496808.92
+        }, {
+            name: "Erythromycin + Zinc acetate",
+            amount: 489965.97
+        }, {
+            name: "Diclofenac sodium + Misoprostol",
+            amount: 483599.13
+        }, {
+            name: "Ketoprofen",
+            amount: 482489.87
+        }, {
+            name: "Chlorphenamine",
+            amount: 480966.87
+        }, {
+            name: "Emulsifying wax + Yellow soft paraffin",
+            amount: 480495.69
+        }, {
+            name: "Captopril",
+            amount: 477465.50
+        }, {
+            name: "Domperidone",
+            amount: 476028.00
+        }, {
+            name: "Estradiol + Norethisterone acetate",
+            amount: 475237.10
+        }, {
+            name: "Bezafibrate",
+            amount: 474818.92
+        }, {
+            name: "Tamoxifen",
+            amount: 458363.87
+        }, {
+            name: "Dapsone",
+            amount: 458048.20
+        }, {
+            name: "Simvastatin + Ezetimibe",
+            amount: 449224.11
+        }, {
+            name: "Hepatitis A + B vaccine",
+            amount: 447089.15
+        }, {
+            name: "Diamorphine",
+            amount: 445533.65
+        }, {
+            name: "Terbinafine",
+            amount: 441597.37
+        }, {
+            name: "Sodium alginate + Magnesium alginate",
+            amount: 438620.35
+        }, {
+            name: "Azathioprine",
+            amount: 436148.11
+        }, {
+            name: "Orphenadrine",
+            amount: 435901.62
+        }, {
+            name: "Ciprofibrate",
+            amount: 430378.32
+        }, {
+            name: "Zolmitriptan",
+            amount: 427804.26
+        }, {
+            name: "Clobetasol",
+            amount: 424133.25
+        }, {
+            name: "Dronedarone",
+            amount: 423717.71
+        }, {
+            name: "Exemestane",
+            amount: 422239.93
+        }, {
+            name: "Denosumab",
+            amount: 420534.00
+        }, {
+            name: "Paracetamol + Dihydrocodeine",
+            amount: 404638.48
+        }, {
+            name: "Ispaghula husk + Mebeverine",
+            amount: 404555.45
+        }, {
+            name: "Doxepin",
+            amount: 404059.12
+        }, {
+            name: "Eslicarbazepine",
+            amount: 403787.84
+        }, {
+            name: "Co-careldopa",
+            amount: 399092.17
+        }, {
+            name: "Medroxyprogesterone",
+            amount: 398662.73
+        }, {
+            name: "Metoclopramide",
+            amount: 390342.21
+        }, {
+            name: "Bumetanide",
+            amount: 389757.98
+        }, {
+            name: "Travoprost",
+            amount: 388483.99
+        }, {
+            name: "Indacaterol",
+            amount: 385463.74
+        }, {
+            name: "Cefalexin",
+            amount: 382426.91
+        }, {
+            name: "Cabergoline",
+            amount: 378748.63
+        }, {
+            name: "Calcitriol",
+            amount: 376424.13
+        }, {
+            name: "Gamolenic acid",
+            amount: 375771.44
+        }, {
+            name: "Ferrous sulfate",
+            amount: 375684.14
+        }, {
+            name: "Ciprofloxacin",
+            amount: 375054.30
+        }, {
+            name: "Bromocriptine",
+            amount: 369352.40
+        }, {
+            name: "Loratadine",
+            amount: 365390.67
+        }, {
+            name: "Verapamil",
+            amount: 364086.46
+        }, {
+            name: "Flupentixol decanoate",
+            amount: 363024.90
+        }, {
+            name: "Minocycline",
+            amount: 359742.96
+        }, {
+            name: "Erythromycin ethyl succinate",
+            amount: 358607.79
+        }, {
+            name: "Spironolactone",
+            amount: 356419.60
+        }, {
+            name: "Vildagliptin + Metformin",
+            amount: 355759.09
+        }, {
+            name: "Amisulpride",
+            amount: 351262.89
+        }, {
+            name: "Docusate",
+            amount: 350932.24
+        }, {
+            name: "Urea + Lauromacrogols",
+            amount: 348127.46
+        }, {
+            name: "Lidocaine + Chlorhexidine",
+            amount: 347459.20
+        }, {
+            name: "Estradiol + Norethisterone",
+            amount: 347006.61
+        }, {
+            name: "Primidone",
+            amount: 343917.73
+        }, {
+            name: "Povidone-Iodine",
+            amount: 340332.55
+        }, {
+            name: "Perindopril arginine + Indapamide",
+            amount: 339685.12
+        }, {
+            name: "Losartan + Hydrochlorothiazide",
+            amount: 338676.54
+        }, {
+            name: "Phenobarbital",
+            amount: 337464.41
+        }, {
+            name: "Grass pollen",
+            amount: 334990.81
+        }, {
+            name: "Co-cyprindiol",
+            amount: 334195.52
+        }, {
+            name: "Fulvestrant",
+            amount: 332949.22
+        }, {
+            name: "Ethinylestradiol + Desogestrel",
+            amount: 332233.11
+        }, {
+            name: "Pneumococcal vaccine",
+            amount: 332009.61
+        }, {
+            name: "Hypromellose + Dextran 70",
+            amount: 331554.28
+        }, {
+            name: "Tranexamic acid",
+            amount: 330852.81
+        }, {
+            name: "Glucose",
+            amount: 330537.48
+        }, {
+            name: "Levocetirizine",
+            amount: 329655.26
+        }, {
+            name: "Co-danthramer",
+            amount: 327015.51
+        }, {
+            name: "Alprostadil",
+            amount: 321430.39
+        }, {
+            name: "Hyoscine (base)",
+            amount: 320012.53
+        }, {
+            name: "Famciclovir",
+            amount: 318340.11
+        }, {
+            name: "Chlorhexidine",
+            amount: 317881.82
+        }, {
+            name: "Sodium cromoglicate",
+            amount: 317207.98
+        }, {
+            name: "Lofepramine",
+            amount: 316645.65
+        }, {
+            name: "Magnesium aspartate",
+            amount: 315917.26
+        }, {
+            name: "Desloratadine",
+            amount: 312366.46
+        }, {
+            name: "Diphtheria + Tetanus + Poliomyelitis vaccine",
+            amount: 311129.19
+        }, {
+            name: "Honey",
+            amount: 310330.91
+        }, {
+            name: "Cyanocobalamin",
+            amount: 309477.35
+        }, {
+            name: "Pseudoephedrine",
+            amount: 307673.52
+        }, {
+            name: "Lorazepam",
+            amount: 305371.79
+        }, {
+            name: "Salicylic acid + Betamethasone",
+            amount: 304674.97
+        }, {
+            name: "Clindamycin",
+            amount: 304598.24
+        }, {
+            name: "Glucagon",
+            amount: 303390.77
+        }, {
+            name: "Naftidrofuryl",
+            amount: 294565.29
+        }, {
+            name: "Hydroxychloroquine",
+            amount: 287854.48
+        }, {
+            name: "Hyoscine hydrobromide",
+            amount: 286657.14
+        }, {
+            name: "Finasteride",
+            amount: 286023.54
+        }, {
+            name: "Latanoprost + Timolol",
+            amount: 285315.49
+        }, {
+            name: "Chlordiazepoxide",
+            amount: 279899.42
+        }, {
+            name: "Disulfiram",
+            amount: 276049.13
+        }, {
+            name: "Demeclocycline",
+            amount: 275230.92
+        }, {
+            name: "Bicalutamide",
+            amount: 271041.54
+        }, {
+            name: "Sevelamer",
+            amount: 268968.74
+        }, {
+            name: "Norethisterone",
+            amount: 267684.14
+        }, {
+            name: "Rufinamide",
+            amount: 267545.03
+        }, {
+            name: "Lormetazepam",
+            amount: 265321.86
+        }, {
+            name: "Fluconazole",
+            amount: 262295.58
+        }, {
+            name: "Hypromellose",
+            amount: 261613.25
+        }, {
+            name: "Hyetellose",
+            amount: 260736.35
+        }, {
+            name: "Calcium carbonate",
+            amount: 259229.72
+        }, {
+            name: "Dexamfetamine",
+            amount: 258826.85
+        }, {
+            name: "Olsalazine",
+            amount: 255903.50
+        }, {
+            name: "Miconazole",
+            amount: 254889.30
+        }, {
+            name: "Lanthanum carbonate",
+            amount: 254172.94
+        }, {
+            name: "Adapalene",
+            amount: 252228.28
+        }, {
+            name: "Permethrin",
+            amount: 247857.71
+        }, {
+            name: "Ethinylestradiol",
+            amount: 246027.94
+        }, {
+            name: "Umeclidinium bromide",
+            amount: 241490.20
+        }, {
+            name: "Tizanidine",
+            amount: 239600.56
+        }, {
+            name: "Acetazolamide",
+            amount: 229846.11
+        }, {
+            name: "Colesevelam",
+            amount: 229576.46
+        }, {
+            name: "Salbutamol + Ipratropium",
+            amount: 229539.05
+        }, {
+            name: "Frovatriptan",
+            amount: 228842.60
+        }, {
+            name: "Insulin isophane human",
+            amount: 223252.57
+        }, {
+            name: "Umeclidinium bromide + Vilanterol",
+            amount: 222085.89
+        }, {
+            name: "Ethinylestradiol + Norelgestromin",
+            amount: 218503.66
+        }, {
+            name: "Valsartan + Hydrochlorothiazide",
+            amount: 218475.81
+        }, {
+            name: "Sodium clodronate",
+            amount: 217724.45
+        }, {
+            name: "Methylprednisolone acetate",
+            amount: 217220.42
+        }, {
+            name: "Pyridostigmine",
+            amount: 216310.08
+        }, {
+            name: "Erythromycin stearate",
+            amount: 216009.00
+        }, {
+            name: "Promazine",
+            amount: 214984.81
+        }, {
+            name: "Strontium ranelate",
+            amount: 213217.79
+        }, {
+            name: "Hepatitis B vaccine",
+            amount: 213139.79
+        }, {
+            name: "Propafenone",
+            amount: 212815.51
+        }, {
+            name: "Itraconazole",
+            amount: 212298.80
+        }, {
+            name: "Typhoid vaccine",
+            amount: 212190.75
+        }, {
+            name: "Salicylic acid + Mucopolysaccharide polysulfate",
+            amount: 210627.46
+        }, {
+            name: "Cinnarizine",
+            amount: 209018.72
+        }, {
+            name: "Formoterol",
+            amount: 208343.65
+        }, {
+            name: "Zafirlukast",
+            amount: 207416.17
+        }, {
+            name: "Lithium carbonate",
+            amount: 206746.90
+        }, {
+            name: "Lixisenatide",
+            amount: 204447.94
+        }, {
+            name: "Balsalazide",
+            amount: 203895.99
+        }, {
+            name: "Pyridoxine",
+            amount: 203623.40
+        }, {
+            name: "Ethinylestradiol + Gestodene",
+            amount: 203582.98
+        }, {
+            name: "Fluocinolone acetonide",
+            amount: 203482.60
+        }, {
+            name: "Haloperidol",
+            amount: 202691.90
+        }, {
+            name: "Stiripentol",
+            amount: 202636.12
+        }, {
+            name: "Vildagliptin",
+            amount: 201208.43
+        }, {
+            name: "Calcium lactate + Calcium phosphate + Ergocalciferol",
+            amount: 198883.87
+        }, {
+            name: "Rabeprazole",
+            amount: 198660.10
+        }, {
+            name: "Quinapril",
+            amount: 197635.25
+        }, {
+            name: "Bisacodyl",
+            amount: 197093.44
+        }, {
+            name: "Fluorouracil",
+            amount: 196712.77
+        }, {
+            name: "Glimepiride",
+            amount: 194345.45
+        }, {
+            name: "Celiprolol",
+            amount: 194042.00
+        }, {
+            name: "Clomipramine",
+            amount: 192572.55
+        }, {
+            name: "Canagliflozin",
+            amount: 192234.52
+        }, {
+            name: "Dornase alfa",
+            amount: 191671.64
+        }, {
+            name: "Oxcarbazepine",
+            amount: 190840.23
+        }, {
+            name: "Triamcinolone acetonide",
+            amount: 190256.22
+        }, {
+            name: "Zuclopenthixol decanoate",
+            amount: 187464.19
+        }, {
+            name: "Nefopam",
+            amount: 186546.33
+        }, {
+            name: "Empagliflozin",
+            amount: 184280.99
+        }, {
+            name: "Amantadine",
+            amount: 184010.88
+        }, {
+            name: "Metoprolol",
+            amount: 182999.23
+        }, {
+            name: "Amlodipine + Valsartan",
+            amount: 179285.42
+        }, {
+            name: "Meloxicam",
+            amount: 178804.84
+        }, {
+            name: "Ethosuximide",
+            amount: 178460.97
+        }, {
+            name: "Trifluoperazine",
+            amount: 177511.68
+        }, {
+            name: "Sotalol",
+            amount: 176428.49
+        }, {
+            name: "Perindopril arginine",
+            amount: 174955.71
+        }, {
+            name: "Sodium citrate",
+            amount: 174739.47
+        }, {
+            name: "Loprazolam",
+            amount: 174364.84
+        }, {
+            name: "Entacapone",
+            amount: 172463.11
+        }, {
+            name: "Oxytetracycline",
+            amount: 170851.43
+        }, {
+            name: "Vigabatrin",
+            amount: 168573.34
+        }, {
+            name: "Propiverine",
+            amount: 167920.12
+        }, {
+            name: "Mycophenolic acid",
+            amount: 166948.16
+        }, {
+            name: "Cinnarizine + Dimenhydrinate",
+            amount: 164049.94
+        }, {
+            name: "Human papillomavirus vaccine",
+            amount: 162826.00
+        }, {
+            name: "Methyldopa",
+            amount: 160617.88
+        }, {
+            name: "Telmisartan",
+            amount: 160227.73
+        }, {
+            name: "Sirolimus",
+            amount: 159440.37
+        }, {
+            name: "Telmisartan + Hydrochlorothiazide",
+            amount: 158941.53
+        }, {
+            name: "Alfacalcidol",
+            amount: 156457.20
+        }, {
+            name: "Tranylcypromine",
+            amount: 155299.80
+        }, {
+            name: "Crotamiton",
+            amount: 155212.80
+        }, {
+            name: "Cloral betaine",
+            amount: 154479.04
+        }, {
+            name: "Chloral hydrate",
+            amount: 154276.61
+        }, {
+            name: "Mupirocin",
+            amount: 153445.03
+        }, {
+            name: "Levomepromazine",
+            amount: 152736.51
+        }, {
+            name: "Pimecrolimus",
+            amount: 151887.28
+        }, {
+            name: "Co-amilofruse",
+            amount: 149966.77
+        }, {
+            name: "Tioconazole",
+            amount: 149352.45
+        }, {
+            name: "Labetalol",
+            amount: 148377.91
+        }, {
+            name: "Eletriptan",
+            amount: 146577.95
+        }, {
+            name: "Amiloride",
+            amount: 144793.94
+        }, {
+            name: "Aliskiren",
+            amount: 144398.66
+        }, {
+            name: "Atropine",
+            amount: 143973.45
+        }, {
+            name: "Moxonidine",
+            amount: 143827.38
+        }, {
+            name: "Colestyramine",
+            amount: 142787.70
+        }, {
+            name: "Zinc oxide",
+            amount: 140689.76
+        }, {
+            name: "Reboxetine",
+            amount: 139853.59
+        }, {
+            name: "Sodium fusidate",
+            amount: 139575.97
+        }, {
+            name: "Urea + Lactic acid",
+            amount: 138765.13
+        }, {
+            name: "Sodium hyaluronate + Dexpanthenol",
+            amount: 138620.46
+        }, {
+            name: "Polymyxin B + Bacitracin",
+            amount: 138351.45
+        }, {
+            name: "Dipyridamole + Aspirin",
+            amount: 136944.91
+        }, {
+            name: "Methylprednisolone + Lidocaine",
+            amount: 136362.20
+        }, {
+            name: "Hydrocortisone butyrate",
+            amount: 135397.87
+        }, {
+            name: "Betamethasone + Clotrimazole",
+            amount: 135053.78
+        }, {
+            name: "Tetrabenazine",
+            amount: 134057.93
+        }, {
+            name: "Conjugated oestrogens + Medroxyprogesterone",
+            amount: 133966.52
+        }, {
+            name: "Ofloxacin",
+            amount: 133481.19
+        }, {
+            name: "Indoramin",
+            amount: 131996.83
+        }, {
+            name: "Oxerutins",
+            amount: 131927.00
+        }, {
+            name: "Diclofenac potassium",
+            amount: 130176.47
+        }, {
+            name: "Carvedilol",
+            amount: 128764.45
+        }, {
+            name: "Betaine",
+            amount: 127696.00
+        }, {
+            name: "Sodium acid phosphate + Sodium phosphate",
+            amount: 126934.54
+        }, {
+            name: "Hydrocortisone + Gentamicin",
+            amount: 126485.77
+        }, {
+            name: "Moxisylyte",
+            amount: 126459.18
+        }, {
+            name: "Progesterone",
+            amount: 125801.20
+        }, {
+            name: "Dorzolamide + Timolol",
+            amount: 125486.65
+        }, {
+            name: "Naratriptan",
+            amount: 122216.56
+        }, {
+            name: "Enalapril",
+            amount: 121079.09
+        }, {
+            name: "Propantheline",
+            amount: 119687.41
+        }, {
+            name: "Pilocarpine",
+            amount: 118993.54
+        }, {
+            name: "Fludrocortisone",
+            amount: 117651.53
+        }, {
+            name: "Citric acid",
+            amount: 117383.51
+        }, {
+            name: "Estradiol + Dydrogesterone",
+            amount: 117131.42
+        }, {
+            name: "Soya oil",
+            amount: 115243.96
+        }, {
+            name: "Emulsifying ointment + Phenoxyethanol",
+            amount: 114907.77
+        }, {
+            name: "Benperidol",
+            amount: 114318.26
+        }, {
+            name: "Nizatidine",
+            amount: 114165.06
+        }, {
+            name: "Levodopa + Carbidopa + Entacapone",
+            amount: 113491.23
+        }, {
+            name: "Timolol",
+            amount: 112972.34
+        }, {
+            name: "Fluphenazine decanoate",
+            amount: 112587.03
+        }, {
+            name: "Salicylic acid + Lactic acid",
+            amount: 111980.23
+        }, {
+            name: "Fluvastatin",
+            amount: 109676.75
+        }, {
+            name: "Co-tenidone",
+            amount: 108984.11
+        }, {
+            name: "Fludroxycortide",
+            amount: 108983.73
+        }, {
+            name: "Moclobemide",
+            amount: 107993.39
+        }, {
+            name: "Pethidine",
+            amount: 106742.25
+        }, {
+            name: "Trihexyphenidyl",
+            amount: 105832.18
+        }, {
+            name: "Sulpiride",
+            amount: 104574.13
+        }, {
+            name: "Flecainide",
+            amount: 103862.31
+        }, {
+            name: "Hydroxyzine",
+            amount: 103515.99
+        }, {
+            name: "Amiloride + Bumetanide",
+            amount: 102150.99
+        }, {
+            name: "Methadone",
+            amount: 101438.56
+        }, {
+            name: "Degarelix",
+            amount: 99768.84
+        }, {
+            name: "Diethylstilbestrol",
+            amount: 98399.44
+        }, {
+            name: "Lidocaine + Prilocaine",
+            amount: 98157.43
+        }, {
+            name: "Raloxifene",
+            amount: 97687.36
+        }, {
+            name: "Pholcodine",
+            amount: 97578.89
+        }, {
+            name: "Insulin soluble human",
+            amount: 96698.10
+        }, {
+            name: "Alendronic acid + Colecalciferol",
+            amount: 96337.06
+        }, {
+            name: "Levofloxacin",
+            amount: 95921.75
+        }, {
+            name: "Brinzolamide + Timolol",
+            amount: 95710.84
+        }, {
+            name: "Valaciclovir",
+            amount: 95523.38
+        }, {
+            name: "Amiodarone",
+            amount: 94736.09
+        }, {
+            name: "Almotriptan",
+            amount: 93793.21
+        }, {
+            name: "Cimetidine",
+            amount: 93593.82
+        }, {
+            name: "Torasemide",
+            amount: 92761.81
+        }, {
+            name: "Tilactase",
+            amount: 92520.02
+        }, {
+            name: "Sodium feredetate",
+            amount: 92010.15
+        }, {
+            name: "Sodium bicarbonate",
+            amount: 90237.90
+        }, {
+            name: "Cefaclor",
+            amount: 90117.73
+        }, {
+            name: "Neomycin +Chlorhexidine",
+            amount: 89921.50
+        }, {
+            name: "Naltrexone",
+            amount: 89818.61
+        }, {
+            name: "Felbinac",
+            amount: 89533.68
+        }, {
+            name: "Acemetacin",
+            amount: 89509.14
+        }, {
+            name: "Azelastine",
+            amount: 89022.07
+        }, {
+            name: "Nedocromil",
+            amount: 87823.71
+        }, {
+            name: "Eprosartan",
+            amount: 85451.87
+        }, {
+            name: "Ethinylestradiol + Norethisterone acetate",
+            amount: 85199.28
+        }, {
+            name: "Insulin degludec + Liraglutide",
+            amount: 85150.48
+        }, {
+            name: "Buprenorphine + Naloxone",
+            amount: 85030.72
+        }, {
+            name: "Aminophylline",
+            amount: 84902.95
+        }, {
+            name: "Silicone",
+            amount: 84601.71
+        }, {
+            name: "Folinic acid",
+            amount: 84381.16
+        }, {
+            name: "Benzalkonium",
+            amount: 84025.34
+        }, {
+            name: "Letrozole",
+            amount: 82914.35
+        }, {
+            name: "Olmesartan + Hydrochlorothiazide",
+            amount: 82863.64
+        }, {
+            name: "Cyclopentolate",
+            amount: 82254.88
+        }, {
+            name: "Insulin soluble porcine",
+            amount: 82215.01
+        }, {
+            name: "Rifampicin",
+            amount: 80892.89
+        }, {
+            name: "Ciclesonide",
+            amount: 80809.71
+        }, {
+            name: "Co-proxamol",
+            amount: 80805.21
+        }, {
+            name: "Voriconazole",
+            amount: 80303.72
+        }, {
+            name: "Sucralfate",
+            amount: 80254.05
+        }, {
+            name: "Conjugated oestrogens",
+            amount: 79780.27
+        }, {
+            name: "Piperacillin + Tazobactam",
+            amount: 79038.14
+        }, {
+            name: "Mercaptamine",
+            amount: 78695.30
+        }, {
+            name: "Co-trimoxazole",
+            amount: 78369.95
+        }, {
+            name: "Lacidipine",
+            amount: 78184.22
+        }, {
+            name: "Xylometazoline",
+            amount: 77775.03
+        }, {
+            name: "Potassium bicarbonate + Potassium chloride",
+            amount: 77179.07
+        }, {
+            name: "Paracetamol + Metoclopramide",
+            amount: 76477.00
+        }, {
+            name: "Levocarnitine",
+            amount: 76103.03
+        }, {
+            name: "Pentoxifylline",
+            amount: 75851.19
+        }, {
+            name: "Penicillamine",
+            amount: 74710.68
+        }, {
+            name: "Sulfadiazine silver",
+            amount: 73445.30
+        }, {
+            name: "Dexamethasone + Tobramycin",
+            amount: 72055.99
+        }, {
+            name: "Fosinopril",
+            amount: 71662.89
+        }, {
+            name: "Carteolol",
+            amount: 71185.23
+        }, {
+            name: "Mizolastine",
+            amount: 70996.50
+        }, {
+            name: "Alclometasone",
+            amount: 70733.85
+        }, {
+            name: "Ampicillin",
+            amount: 70338.61
+        }, {
+            name: "Heparin",
+            amount: 69667.19
+        }, {
+            name: "Olive oil",
+            amount: 69435.18
+        }, {
+            name: "Benzoyl peroxide",
+            amount: 69372.58
+        }, {
+            name: "Insulin isophane porcine",
+            amount: 69002.65
+        }, {
+            name: "Glipizide",
+            amount: 68860.79
+        }, {
+            name: "Estriol",
+            amount: 68713.36
+        }, {
+            name: "Fluvoxamine",
+            amount: 68695.41
+        }, {
+            name: "Lidocaine + Hydrocortisone",
+            amount: 68625.33
+        }, {
+            name: "Heparinoid",
+            amount: 68481.12
+        }, {
+            name: "Aluminium chloride",
+            amount: 68012.84
+        }, {
+            name: "Pivmecillinam",
+            amount: 67604.77
+        }, {
+            name: "Dorzolamide",
+            amount: 67499.87
+        }, {
+            name: "Estradiol + Levonorgestrel",
+            amount: 67126.63
+        }, {
+            name: "Aclidinium bromide + Formoterol",
+            amount: 66977.42
+        }, {
+            name: "Soya oil + Lauromacrogols",
+            amount: 65625.44
+        }, {
+            name: "Dipipanone + Cyclizine",
+            amount: 64716.92
+        }, {
+            name: "Hydroxycarbamide",
+            amount: 63539.03
+        }, {
+            name: "Enalapril + Hydrochlorothiazide",
+            amount: 63037.41
+        }, {
+            name: "Disopyramide",
+            amount: 62949.32
+        }, {
+            name: "Tacalcitol",
+            amount: 62496.68
+        }, {
+            name: "Famotidine",
+            amount: 61927.83
+        }, {
+            name: "Salicylic acid",
+            amount: 61813.66
+        }, {
+            name: "Ethambutol",
+            amount: 61755.05
+        }, {
+            name: "Co-danthrusate",
+            amount: 61017.97
+        }, {
+            name: "Sodium fluoride",
+            amount: 60427.60
+        }, {
+            name: "Vancomycin",
+            amount: 60424.43
+        }, {
+            name: "Betamethasone + Neomycin",
+            amount: 60134.94
+        }, {
+            name: "Glycerol",
+            amount: 60092.00
+        }, {
+            name: "Tinzaparin",
+            amount: 59644.53
+        }, {
+            name: "Phenindione",
+            amount: 59515.92
+        }, {
+            name: "Tropicamide",
+            amount: 57693.00
+        }, {
+            name: "Cyproterone",
+            amount: 57593.56
+        }, {
+            name: "Tafluprost",
+            amount: 57351.60
+        }, {
+            name: "Betamethasone + Clioquinol",
+            amount: 56991.38
+        }, {
+            name: "Meprobamate",
+            amount: 56398.88
+        }, {
+            name: "Co-amilozide",
+            amount: 56178.35
+        }, {
+            name: "Imipramine",
+            amount: 55971.96
+        }, {
+            name: "Quinine bisulfate",
+            amount: 55358.79
+        }, {
+            name: "Tolbutamide",
+            amount: 54720.77
+        }, {
+            name: "Polyvinyl alcohol",
+            amount: 54703.27
+        }, {
+            name: "Estradiol + Medroxyprogesterone",
+            amount: 54636.37
+        }, {
+            name: "Co-magaldrox",
+            amount: 54479.76
+        }, {
+            name: "Aspirin + Metoclopramide",
+            amount: 53089.65
+        }, {
+            name: "Hydroxypropyl guar",
+            amount: 52720.51
+        }, {
+            name: "Oxazepam",
+            amount: 51979.15
+        }, {
+            name: "Selegiline",
+            amount: 51848.91
+        }, {
+            name: "Atenolol + Nifedipine",
+            amount: 51777.91
+        }, {
+            name: "Tetracycline",
+            amount: 51660.97
+        }, {
+            name: "Pericyazine",
+            amount: 51558.79
+        }, {
+            name: "Betaxolol",
+            amount: 50850.31
+        }, {
+            name: "Nalmefene",
+            amount: 50478.67
+        }, {
+            name: "Brimonidine",
+            amount: 48890.20
+        }, {
+            name: "Deflazacort",
+            amount: 47975.24
+        }, {
+            name: "Phenelzine",
+            amount: 47746.99
+        }, {
+            name: "Olopatadine",
+            amount: 47205.76
+        }, {
+            name: "Glibenclamide",
+            amount: 46884.57
+        }, {
+            name: "White soft paraffin",
+            amount: 46878.85
+        }, {
+            name: "Tolcapone",
+            amount: 46404.27
+        }, {
+            name: "Flavoxate",
+            amount: 46342.19
+        }, {
+            name: "Valganciclovir",
+            amount: 46080.22
+        }, {
+            name: "Lodoxamide",
+            amount: 45492.44
+        }, {
+            name: "Urea hydrogen peroxide",
+            amount: 45458.07
+        }, {
+            name: "Isoniazid",
+            amount: 45328.74
+        }, {
+            name: "Acebutolol",
+            amount: 44901.14
+        }, {
+            name: "Calcium phosphate + Colecalciferol",
+            amount: 44685.12
+        }, {
+            name: "Ethinylestradiol + Etonogestrel",
+            amount: 44481.64
+        }, {
+            name: "Nabumetone",
+            amount: 44480.79
+        }, {
+            name: "Hydromorphone",
+            amount: 44405.63
+        }, {
+            name: "Griseofulvin",
+            amount: 44164.41
+        }, {
+            name: "Dexpanthenol",
+            amount: 44076.20
+        }, {
+            name: "Azelaic acid",
+            amount: 43839.46
+        }, {
+            name: "Acarbose",
+            amount: 43717.89
+        }, {
+            name: "Wool fat",
+            amount: 43581.94
+        }, {
+            name: "Neomycin + Chlorhexidine",
+            amount: 43539.25
+        }, {
+            name: "Selenium",
+            amount: 43508.79
+        }, {
+            name: "Meptazinol",
+            amount: 43318.01
+        }, {
+            name: "Minoxidil",
+            amount: 43257.96
+        }, {
+            name: "Megestrol",
+            amount: 43187.31
+        }, {
+            name: "Menthol",
+            amount: 42838.20
+        }, {
+            name: "Calcium lactate gluconate + Calcium carbonate",
+            amount: 42331.49
+        }, {
+            name: "Acetic acid",
+            amount: 41818.48
+        }, {
+            name: "Retinol + Vitamin D",
+            amount: 41789.45
+        }, {
+            name: "Epoetin beta",
+            amount: 40415.26
+        }, {
+            name: "Linezolid",
+            amount: 40094.50
+        }, {
+            name: "Phenoxybenzamine",
+            amount: 40014.89
+        }, {
+            name: "Acipimox",
+            amount: 39822.94
+        }, {
+            name: "Rifampicin + Isoniazid",
+            amount: 39254.82
+        }, {
+            name: "Gemfibrozil",
+            amount: 38857.73
+        }, {
+            name: "Ganciclovir",
+            amount: 38679.08
+        }, {
+            name: "Roflumilast",
+            amount: 38458.34
+        }, {
+            name: "Alpha tocopherol",
+            amount: 38281.83
+        }, {
+            name: "Repaglinide",
+            amount: 38190.64
+        }, {
+            name: "Isosorbide dinitrate",
+            amount: 38079.19
+        }, {
+            name: "Amiloride + Cyclopenthiazide",
+            amount: 37634.40
+        }, {
+            name: "Bupropion",
+            amount: 37383.00
+        }, {
+            name: "Clomifene",
+            amount: 36908.99
+        }, {
+            name: "Nateglinide",
+            amount: 36854.97
+        }, {
+            name: "Ceftriaxone",
+            amount: 36849.34
+        }, {
+            name: "Calcium acetate",
+            amount: 36809.46
+        }, {
+            name: "Glucosamine sulfate",
+            amount: 36753.07
+        }, {
+            name: "Zuclopenthixol",
+            amount: 36550.99
+        }, {
+            name: "Sodium acid phosphate",
+            amount: 36202.55
+        }, {
+            name: "Cefuroxime",
+            amount: 35984.78
+        }, {
+            name: "Clomethiazole",
+            amount: 35797.85
+        }, {
+            name: "Indometacin",
+            amount: 35706.21
+        }, {
+            name: "Flupentixol dihydrochloride",
+            amount: 35691.76
+        }, {
+            name: "Potassium permanganate",
+            amount: 35476.45
+        }, {
+            name: "Co-zidocapt",
+            amount: 35222.89
+        }, {
+            name: "Apraclonidine",
+            amount: 35047.01
+        }, {
+            name: "Sodium aurothiomalate",
+            amount: 34928.06
+        }, {
+            name: "Glucosamine sulfate + Chondroitin",
+            amount: 34873.17
+        }, {
+            name: "Menadiol",
+            amount: 34868.28
+        }, {
+            name: "Pipotiazine",
+            amount: 34776.35
+        }, {
+            name: "Ketoprofen + Omeprazole",
+            amount: 34700.70
+        }, {
+            name: "Olmesartan + Amlodipine",
+            amount: 34676.15
+        }, {
+            name: "Simeticone",
+            amount: 34449.30
+        }, {
+            name: "Tiagabine",
+            amount: 34414.68
+        }, {
+            name: "Methylprednisolone",
+            amount: 34294.27
+        }, {
+            name: "Malathion",
+            amount: 34289.50
+        }, {
+            name: "Castor oil + Zinc oxide",
+            amount: 33812.66
+        }, {
+            name: "Ferrous sulphate",
+            amount: 33681.89
+        }, {
+            name: "Oseltamivir",
+            amount: 33617.47
+        }, {
+            name: "Ichthammol + Zinc oxide",
+            amount: 32837.16
+        }, {
+            name: "Inositol nicotinate",
+            amount: 32744.04
+        }, {
+            name: "Benzocaine",
+            amount: 32689.68
+        }, {
+            name: "Sulfinpyrazone",
+            amount: 32642.99
+        }, {
+            name: "Cefradine",
+            amount: 31664.47
+        }, {
+            name: "Haloperidol decanoate",
+            amount: 31578.59
+        }, {
+            name: "Brimonidine + Timolol",
+            amount: 31161.64
+        }, {
+            name: "Diethylamine salicylate",
+            amount: 30808.05
+        }, {
+            name: "Flurbiprofen",
+            amount: 30465.44
+        }, {
+            name: "Mebendazole",
+            amount: 30314.06
+        }, {
+            name: "Dulaglutide",
+            amount: 30105.76
+        }, {
+            name: "Erdosteine",
+            amount: 29786.32
+        }, {
+            name: "Meropenem",
+            amount: 29714.61
+        }, {
+            name: "Clioquinol + Flumetasone",
+            amount: 29559.45
+        }, {
+            name: "Hydrocortisone + Crotamiton",
+            amount: 29534.29
+        }, {
+            name: "Hydralazine",
+            amount: 29425.31
+        }, {
+            name: "Dexibuprofen",
+            amount: 28919.64
+        }, {
+            name: "Prazosin",
+            amount: 28380.11
+        }, {
+            name: "Isotretinoin",
+            amount: 28169.25
+        }, {
+            name: "Cyclophosphamide",
+            amount: 28065.22
+        }, {
+            name: "Acrivastine",
+            amount: 27946.69
+        }, {
+            name: "Alogliptin",
+            amount: 27691.67
+        }, {
+            name: "Terazosin",
+            amount: 27629.94
+        }, {
+            name: "Cinchocaine + Prednisolone",
+            amount: 27581.11
+        }, {
+            name: "Ferrous fumarate + Folic acid",
+            amount: 27019.70
+        }, {
+            name: "Tolfenamic acid",
+            amount: 26770.22
+        }, {
+            name: "Aceclofenac",
+            amount: 26621.84
+        }, {
+            name: "Lactic acid",
+            amount: 26565.69
+        }, {
+            name: "Parecoxib",
+            amount: 26557.71
+        }, {
+            name: "Brinzolamide + Brimonidine",
+            amount: 26555.42
+        }, {
+            name: "Dexketoprofen",
+            amount: 26455.41
+        }, {
+            name: "Naproxen + Esomeprazole",
+            amount: 26159.35
+        }, {
+            name: "Phenytoin",
+            amount: 25893.95
+        }, {
+            name: "Hydrocortisone + Urea",
+            amount: 25872.63
+        }, {
+            name: "Co-phenotrope",
+            amount: 25773.95
+        }, {
+            name: "Insulin isophane biphasic porcine",
+            amount: 25620.85
+        }, {
+            name: "Cod liver oil",
+            amount: 25362.38
+        }, {
+            name: "Hydrochlorothiazide + Quinapril",
+            amount: 25131.47
+        }, {
+            name: "Sulindac",
+            amount: 25013.38
+        }, {
+            name: "Dimeticone",
+            amount: 24488.55
+        }, {
+            name: "Fluorometholone",
+            amount: 24093.88
+        }, {
+            name: "Potassium chloride",
+            amount: 24063.67
+        }, {
+            name: "Calcium polystyrene sulfonate",
+            amount: 23636.96
+        }, {
+            name: "Dithranol",
+            amount: 23586.93
+        }, {
+            name: "Influenza vaccine",
+            amount: 23377.44
+        }, {
+            name: "Dalteparin",
+            amount: 22896.71
+        }, {
+            name: "Edoxaban",
+            amount: 22835.33
+        }, {
+            name: "Insulin soluble bovine",
+            amount: 21920.97
+        }, {
+            name: "Ketamine",
+            amount: 21762.92
+        }, {
+            name: "Dantrolene",
+            amount: 21718.55
+        }, {
+            name: "Nicardipine",
+            amount: 21677.71
+        }, {
+            name: "Imatinib",
+            amount: 21550.79
+        }, {
+            name: "Saxagliptin + Metformin",
+            amount: 21483.95
+        }, {
+            name: "Proguanil + Atovaquone",
+            amount: 21288.10
+        }, {
+            name: "Levobunolol",
+            amount: 21257.58
+        }, {
+            name: "Cilazapril",
+            amount: 21187.31
+        }, {
+            name: "Mianserin",
+            amount: 21184.45
+        }, {
+            name: "Felodipine + Ramipril",
+            amount: 21123.13
+        }, {
+            name: "Isradipine",
+            amount: 20959.09
+        }, {
+            name: "Darifenacin",
+            amount: 20869.70
+        }, {
+            name: "Podophyllotoxin",
+            amount: 20779.36
+        }, {
+            name: "Rabies vaccine",
+            amount: 20618.00
+        }, {
+            name: "Dimeticone + Benzalkonium",
+            amount: 20529.49
+        }, {
+            name: "Testosterone enantate",
+            amount: 20093.05
+        }, {
+            name: "Choline salicylate",
+            amount: 20025.20
+        }, {
+            name: "Cholera vaccine",
+            amount: 19825.03
+        }, {
+            name: "Quinagolide",
+            amount: 19671.38
+        }, {
+            name: "Chlortalidone",
+            amount: 19629.52
+        }, {
+            name: "Estradiol +Drospirenone",
+            amount: 19602.12
+        }, {
+            name: "Tobramycin",
+            amount: 18745.84
+        }, {
+            name: "Potassium citrate",
+            amount: 18700.37
+        }, {
+            name: "Zinc sulphate",
+            amount: 18461.17
+        }, {
+            name: "Potassium citrate + Citric acid",
+            amount: 18247.72
+        }, {
+            name: "Ibuprofen + Levomenthol",
+            amount: 18155.51
+        }, {
+            name: "Dapagliflozin + Metformin",
+            amount: 17938.58
+        }, {
+            name: "Alfentanil",
+            amount: 17843.59
+        }, {
+            name: "Lithium citrate",
+            amount: 17698.06
+        }, {
+            name: "Misoprostol",
+            amount: 17637.20
+        }, {
+            name: "Calamine + Zinc oxide",
+            amount: 17341.86
+        }, {
+            name: "Acetylcysteine",
+            amount: 17147.21
+        }, {
+            name: "Salicylic acid + Mucopolysaccharide polysulphate",
+            amount: 16963.06
+        }, {
+            name: "Meningococcal groups A + C + W135 + Y vaccine",
+            amount: 16456.00
+        }, {
+            name: "Coal tar + Lecithin",
+            amount: 16398.99
+        }, {
+            name: "Oxprenolol",
+            amount: 16368.75
+        }, {
+            name: "Methylcellulose",
+            amount: 16191.54
+        }, {
+            name: "Ephedrine",
+            amount: 16059.47
+        }, {
+            name: "Lidocaine + Adrenaline",
+            amount: 15985.70
+        }, {
+            name: "Rupatadine",
+            amount: 15963.86
+        }, {
+            name: "Bambuterol",
+            amount: 15879.97
+        }, {
+            name: "Ketotifen",
+            amount: 15769.80
+        }, {
+            name: "Emulsifying wax + Liquid paraffin + White soft paraffin",
+            amount: 15723.81
+        }, {
+            name: "Nicotinamide",
+            amount: 15642.33
+        }, {
+            name: "Tolvaptan",
+            amount: 15523.67
+        }, {
+            name: "Piroxicam betadex",
+            amount: 15438.22
+        }, {
+            name: "Pentazocine",
+            amount: 15414.10
+        }, {
+            name: "Potassium hydroxide",
+            amount: 15384.22
+        }, {
+            name: "Potassium acid tartrate + Potassium bicarbonate",
+            amount: 15371.77
+        }, {
+            name: "Midodrine",
+            amount: 15340.34
+        }, {
+            name: "Co-fluampicil",
+            amount: 14968.95
+        }, {
+            name: "Hexetidine",
+            amount: 14851.24
+        }, {
+            name: "Azilsartan",
+            amount: 14849.85
+        }, {
+            name: "Chlorhexidine + Cetrimide",
+            amount: 14730.18
+        }, {
+            name: "Granisetron",
+            amount: 14625.28
+        }, {
+            name: "Insulin isophane bovine",
+            amount: 14539.14
+        }, {
+            name: "Ketorolac",
+            amount: 14485.20
+        }, {
+            name: "Olanzapine embonate",
+            amount: 14367.03
+        }, {
+            name: "Ferrous gluconate",
+            amount: 14293.95
+        }, {
+            name: "Benzylpenicillin",
+            amount: 14223.72
+        }, {
+            name: "Gentamicin",
+            amount: 13823.62
+        }, {
+            name: "Glycerol + Magnesium sulfate + Phenol",
+            amount: 13789.06
+        }, {
+            name: "Sodium phenylbutyrate",
+            amount: 13777.63
+        }, {
+            name: "Fluorescein",
+            amount: 13640.90
+        }, {
+            name: "Methenamine",
+            amount: 13242.37
+        }, {
+            name: "Ulipristal",
+            amount: 13194.08
+        }, {
+            name: "Imidapril",
+            amount: 13057.11
+        }, {
+            name: "Moxifloxacin",
+            amount: 12986.27
+        }, {
+            name: "Erythromycin + Isotretinoin",
+            amount: 12851.16
+        }, {
+            name: "Xipamide",
+            amount: 12773.31
+        }, {
+            name: "Interferon beta-1a",
+            amount: 12523.42
+        }, {
+            name: "Asenapine",
+            amount: 12422.57
+        }, {
+            name: "Retigabine",
+            amount: 12417.70
+        }, {
+            name: "Pergolide",
+            amount: 12258.70
+        }, {
+            name: "Tenoxicam",
+            amount: 12216.41
+        }, {
+            name: "Iron dextran",
+            amount: 11557.48
+        }, {
+            name: "Rifampicin + Isoniazid + Pyrazinamide",
+            amount: 11353.91
+        }, {
+            name: "Tetracaine",
+            amount: 11216.34
+        }, {
+            name: "Rimexolone",
+            amount: 10887.89
+        }, {
+            name: "Morphine + Cyclizine",
+            amount: 10817.27
+        }, {
+            name: "Spironolactone + Furosemide",
+            amount: 10797.59
+        }, {
+            name: "Ceftazidime",
+            amount: 10630.11
+        }, {
+            name: "Piracetam",
+            amount: 10510.41
+        }, {
+            name: "Econazole",
+            amount: 10429.63
+        }, {
+            name: "Lidocaine + Cetalkonium",
+            amount: 10149.55
+        }, {
+            name: "Sterculia + Frangula",
+            amount: 10041.12
+        }, {
+            name: "Fondaparinux",
+            amount: 9993.49
+        }, {
+            name: "Pimozide",
+            amount: 9960.54
+        }, {
+            name: "Pseudoephedrine + Chlorphenamine",
+            amount: 9674.85
+        }, {
+            name: "Glucosamine sulphate + Chondroitin",
+            amount: 9374.21
+        }, {
+            name: "Hydrogen peroxide",
+            amount: 8943.39
+        }, {
+            name: "Nimodipine",
+            amount: 8925.21
+        }, {
+            name: "Estradiol + Drospirenone",
+            amount: 8817.11
+        }, {
+            name: "Silver nitrate",
+            amount: 8762.13
+        }, {
+            name: "Loteprednol",
+            amount: 8690.88
+        }, {
+            name: "Pindolol",
+            amount: 8666.44
+        }, {
+            name: "Flumazenil",
+            amount: 8497.93
+        }, {
+            name: "Methylprednisolone sodium succinate",
+            amount: 8478.94
+        }, {
+            name: "Colestipol",
+            amount: 8408.58
+        }, {
+            name: "Co-codaprin",
+            amount: 8389.28
+        }, {
+            name: "Solifenacin + Tamsulosin",
+            amount: 8375.96
+        }, {
+            name: "Cyproheptadine",
+            amount: 8349.75
+        }, {
+            name: "Iron sucrose",
+            amount: 7945.81
+        }, {
+            name: "Ethinylestradiol + Norethisterone",
+            amount: 7915.37
+        }, {
+            name: "Glucosamine sulphate",
+            amount: 7844.06
+        }, {
+            name: "Cyclomethicone + Isopropyl myristate",
+            amount: 7547.37
+        }, {
+            name: "Simeticone + Loperamide",
+            amount: 7509.09
+        }, {
+            name: "Medium-chain triglycerides",
+            amount: 7489.00
+        }, {
+            name: "Cetrimide + Benzalkonium",
+            amount: 7328.26
+        }, {
+            name: "Phytomenadione",
+            amount: 7140.92
+        }, {
+            name: "Insulin mixed bovine",
+            amount: 6957.73
+        }, {
+            name: "Desferrioxamine",
+            amount: 6953.97
+        }, {
+            name: "Calcitonin",
+            amount: 6922.89
+        }, {
+            name: "Danazol",
+            amount: 6672.78
+        }, {
+            name: "Norfloxacin",
+            amount: 6593.22
+        }, {
+            name: "Nevirapine",
+            amount: 6590.28
+        }, {
+            name: "Pseudoephedrine + Acrivastine",
+            amount: 6589.05
+        }, {
+            name: "Nabilone",
+            amount: 6412.08
+        }, {
+            name: "Triamterene + Furosemide",
+            amount: 6359.56
+        }, {
+            name: "Promethazine teoclate",
+            amount: 6206.49
+        }, {
+            name: "Menthol + Eucalyptus",
+            amount: 6181.32
+        }, {
+            name: "Rifabutin",
+            amount: 6097.62
+        }, {
+            name: "Fluocinonide",
+            amount: 6091.93
+        }, {
+            name: "Follitropin alfa",
+            amount: 6084.44
+        }, {
+            name: "Tazarotene",
+            amount: 5960.60
+        }, {
+            name: "Aluminium oxide",
+            amount: 5934.22
+        }, {
+            name: "Naloxone",
+            amount: 5922.83
+        }, {
+            name: "Malic acid",
+            amount: 5853.65
+        }, {
+            name: "Calcium gluconate",
+            amount: 5828.60
+        }, {
+            name: "Tryptophan",
+            amount: 5782.53
+        }, {
+            name: "Lidocaine + Cetylpyridinium",
+            amount: 5620.43
+        }, {
+            name: "Riluzole",
+            amount: 5528.11
+        }, {
+            name: "Fluocinolone acetonide + Neomycin",
+            amount: 5495.73
+        }, {
+            name: "Sterculia",
+            amount: 5488.38
+        }, {
+            name: "Dichlorobenzyl alcohol + Amylmetacresol",
+            amount: 5478.35
+        }, {
+            name: "Menotrophin",
+            amount: 5200.20
+        }, {
+            name: "Buserelin",
+            amount: 5190.10
+        }, {
+            name: "Filgrastim",
+            amount: 5109.60
+        }, {
+            name: "Quinine bisulphate",
+            amount: 5027.47
+        }, {
+            name: "Emedastine",
+            amount: 4986.83
+        }, {
+            name: "Acitretin",
+            amount: 4894.42
+        }, {
+            name: "Erythromycin + Tretinoin",
+            amount: 4836.58
+        }, {
+            name: "Antazoline + Xylometazoline",
+            amount: 4764.72
+        }, {
+            name: "Fluocinolone acetonide + Clioquinol",
+            amount: 4727.39
+        }, {
+            name: "Co-flumactone",
+            amount: 4690.39
+        }, {
+            name: "Hydrocortisone + Pramocaine",
+            amount: 4569.09
+        }, {
+            name: "Nystatin + Chlorhexidine",
+            amount: 4481.40
+        }, {
+            name: "Nadolol",
+            amount: 4421.60
+        }, {
+            name: "Zinc oxide + Dimeticone",
+            amount: 4414.53
+        }, {
+            name: "Tiaprofenic acid",
+            amount: 4404.51
+        }, {
+            name: "Tripotassium dicitratobismuthate",
+            amount: 4346.67
+        }, {
+            name: "Calcium lactate",
+            amount: 4323.05
+        }, {
+            name: "Zinc oxide + Lidocaine",
+            amount: 4235.97
+        }, {
+            name: "Aprepitant",
+            amount: 4170.53
+        }, {
+            name: "Posaconazole",
+            amount: 4121.43
+        }, {
+            name: "Ephedrine + Chlorphenamine",
+            amount: 4119.48
+        }, {
+            name: "Diflucortolone",
+            amount: 4118.28
+        }, {
+            name: "Sulfadiazine",
+            amount: 4014.56
+        }, {
+            name: "Co-simalcite",
+            amount: 3902.77
+        }, {
+            name: "Tiotropium + Olodaterol",
+            amount: 3891.99
+        }, {
+            name: "Benzoyl peroxide + Potassium hydroxyquinoline sulfate",
+            amount: 3843.57
+        }, {
+            name: "Glucosamine hydrochloride",
+            amount: 3747.01
+        }, {
+            name: "Dimeticone + Cetrimide",
+            amount: 3729.86
+        }, {
+            name: "Diazoxide",
+            amount: 3652.22
+        }, {
+            name: "Neostigmine",
+            amount: 3594.44
+        }, {
+            name: "Cefixime",
+            amount: 3587.18
+        }, {
+            name: "Penciclovir",
+            amount: 3564.11
+        }, {
+            name: "Avanafil",
+            amount: 3538.80
+        }, {
+            name: "Deferiprone",
+            amount: 3510.47
+        }, {
+            name: "Potassium aminobenzoate",
+            amount: 3473.66
+        }, {
+            name: "Liquid paraffin + Acetylated wool alcohols",
+            amount: 3445.89
+        }, {
+            name: "Zaleplon",
+            amount: 3284.02
+        }, {
+            name: "Soft paraffin + Wool fat",
+            amount: 3177.43
+        }, {
+            name: "Cefadroxil",
+            amount: 3108.22
+        }, {
+            name: "Efavirenz",
+            amount: 3027.78
+        }, {
+            name: "Tinidazole",
+            amount: 2897.15
+        }, {
+            name: "Lofexidine",
+            amount: 2882.86
+        }, {
+            name: "Estradiol + Nomegestrol",
+            amount: 2871.27
+        }, {
+            name: "Sesame oil",
+            amount: 2867.19
+        }, {
+            name: "Paracetamol + Isometheptene",
+            amount: 2792.93
+        }, {
+            name: "Yellow soft paraffin",
+            amount: 2778.48
+        }, {
+            name: "Indinavir",
+            amount: 2744.23
+        }, {
+            name: "Dequalinium",
+            amount: 2717.11
+        }, {
+            name: "Aluminium hydroxide + Magnesium trisilicate",
+            amount: 2674.05
+        }, {
+            name: "Neomycin",
+            amount: 2661.37
+        }, {
+            name: "Hamamelis",
+            amount: 2659.33
+        }, {
+            name: "Alogliptin + Metformin",
+            amount: 2654.21
+        }, {
+            name: "Tetracosactide",
+            amount: 2643.16
+        }, {
+            name: "Dronabinol + Cannabidiol",
+            amount: 2625.00
+        }, {
+            name: "Calcium glubionate + Calcium lactobionate",
+            amount: 2588.39
+        }, {
+            name: "Flutamide",
+            amount: 2541.81
+        }, {
+            name: "Bupivacaine",
+            amount: 2501.28
+        }, {
+            name: "Nafarelin",
+            amount: 2450.58
+        }, {
+            name: "Insulin protamine zinc bovine",
+            amount: 2383.92
+        }, {
+            name: "Kaolin + Morphine",
+            amount: 2339.75
+        }, {
+            name: "Lamivudine",
+            amount: 2324.47
+        }, {
+            name: "Mesterolone",
+            amount: 2322.51
+        }, {
+            name: "Mefloquine",
+            amount: 2317.67
+        }, {
+            name: "Magnesium sulfate",
+            amount: 2293.75
+        }, {
+            name: "Ibuprofen + Codeine",
+            amount: 2276.77
+        }, {
+            name: "Abacavir",
+            amount: 2255.20
+        }, {
+            name: "Ergometrine + Oxytocin",
+            amount: 2224.10
+        }, {
+            name: "Ferrous sulfate + Folic acid",
+            amount: 2170.08
+        }, {
+            name: "Bosentan",
+            amount: 2130.47
+        }, {
+            name: "Teicoplanin",
+            amount: 2121.97
+        }, {
+            name: "Estramustine",
+            amount: 1956.08
+        }, {
+            name: "Triamterene",
+            amount: 1942.58
+        }, {
+            name: "Chorionic gonadotrophin",
+            amount: 1891.94
+        }, {
+            name: "Cetrorelix",
+            amount: 1873.69
+        }, {
+            name: "Macrogol 4000",
+            amount: 1870.62
+        }, {
+            name: "Etynodiol",
+            amount: 1868.10
+        }, {
+            name: "Anagrelide",
+            amount: 1844.84
+        }, {
+            name: "Mitotane",
+            amount: 1843.83
+        }, {
+            name: "Aluminium hydroxide",
+            amount: 1805.58
+        }, {
+            name: "Inosine acedoben dimepranol",
+            amount: 1741.86
+        }, {
+            name: "Mucin + Xylitol",
+            amount: 1717.09
+        }, {
+            name: "Zinc undecenoate + Undecenoic acid",
+            amount: 1712.24
+        }, {
+            name: "Timolol + Bendroflumethiazide",
+            amount: 1695.46
+        }, {
+            name: "Canagliflozin + Metformin",
+            amount: 1690.05
+        }, {
+            name: "Zuclopenthixol acetate",
+            amount: 1678.82
+        }, {
+            name: "Distigmine",
+            amount: 1660.65
+        }, {
+            name: "Fludarabine",
+            amount: 1585.83
+        }, {
+            name: "Methoxy polyethylene glycol-epoetin beta",
+            amount: 1578.27
+        }, {
+            name: "Follitropin beta",
+            amount: 1575.27
+        }, {
+            name: "Zidovudine + Lamivudine",
+            amount: 1464.42
+        }, {
+            name: "Nonoxinol",
+            amount: 1458.58
+        }, {
+            name: "Busulfan",
+            amount: 1458.40
+        }, {
+            name: "Epoetin alfa",
+            amount: 1441.60
+        }, {
+            name: "Propofol",
+            amount: 1438.67
+        }, {
+            name: "Chloroquine phosphate",
+            amount: 1430.39
+        }, {
+            name: "Verapamil + Trandolapril",
+            amount: 1424.76
+        }, {
+            name: "Idarubicin",
+            amount: 1397.76
+        }, {
+            name: "Raltegravir",
+            amount: 1384.07
+        }, {
+            name: "Erlotinib",
+            amount: 1376.15
+        }, {
+            name: "Diethyl phthalate + Methyl salicylate",
+            amount: 1358.77
+        }, {
+            name: "Phenylephrine",
+            amount: 1339.79
+        }, {
+            name: "Clemastine",
+            amount: 1334.30
+        }, {
+            name: "Disodium etidronate",
+            amount: 1266.33
+        }, {
+            name: "Kaolin",
+            amount: 1261.68
+        }, {
+            name: "Saquinavir",
+            amount: 1245.48
+        }, {
+            name: "Glucose + Glycerol",
+            amount: 1242.41
+        }, {
+            name: "Calcium polystyrene sulphonate",
+            amount: 1241.22
+        }, {
+            name: "Etamsylate",
+            amount: 1208.78
+        }, {
+            name: "Benzocaine + Tyrothricin",
+            amount: 1184.05
+        }, {
+            name: "Tretinoin",
+            amount: 1174.33
+        }, {
+            name: "Topotecan",
+            amount: 1155.30
+        }, {
+            name: "Levofolinic acid",
+            amount: 1138.69
+        }, {
+            name: "Moroctocog alfa",
+            amount: 1129.95
+        }, {
+            name: "Reteplase",
+            amount: 1129.72
+        }, {
+            name: "Triamterene + Chlortalidone",
+            amount: 1111.97
+        }, {
+            name: "Sodium dihydrogen phosphate",
+            amount: 1111.60
+        }, {
+            name: "Sodium lauryl ether sulfo-succinate + Sodium lauryl ether sulfate",
+            amount: 1104.10
+        }, {
+            name: "Toremifene",
+            amount: 1092.40
+        }, {
+            name: "Metolazone",
+            amount: 1091.72
+        }, {
+            name: "Bilastine",
+            amount: 1088.49
+        }, {
+            name: "Glycerol + Magnesium sulphate + Phenol",
+            amount: 1084.47
+        }, {
+            name: "Aztreonam",
+            amount: 1064.19
+        }, {
+            name: "Perindopril erbumine + Amlodipine",
+            amount: 1058.57
+        }, {
+            name: "Adenosine",
+            amount: 1051.25
+        }, {
+            name: "Artemether + Lumefantrine",
+            amount: 1049.71
+        }, {
+            name: "Formaldehyde",
+            amount: 1015.09
+        }, {
+            name: "Arachis oil",
+            amount: 965.09
+        }, {
+            name: "Propamidine",
+            amount: 961.83
+        }, {
+            name: "Lenograstim",
+            amount: 936.78
+        }, {
+            name: "Proxymetacaine",
+            amount: 916.45
+        }, {
+            name: "Acenocoumarol",
+            amount: 904.12
+        }, {
+            name: "Chlorhexidine + Chlorobutanol",
+            amount: 874.03
+        }, {
+            name: "Infliximab",
+            amount: 839.24
+        }, {
+            name: "Epinastine",
+            amount: 773.19
+        }, {
+            name: "Glutaraldehyde",
+            amount: 767.82
+        }, {
+            name: "Benzoyl peroxide + Potassium hydroxyquinoline sulphate",
+            amount: 766.42
+        }, {
+            name: "Hypochlorite",
+            amount: 761.00
+        }, {
+            name: "Dibrompropamidine",
+            amount: 749.74
+        }, {
+            name: "Lapatinib",
+            amount: 746.85
+        }, {
+            name: "Telithromycin",
+            amount: 744.56
+        }, {
+            name: "Aldioxa + Chloroxylenol",
+            amount: 743.19
+        }, {
+            name: "Zanamivir",
+            amount: 739.32
+        }, {
+            name: "Cefpodoxime",
+            amount: 738.84
+        }, {
+            name: "Pyrimethamine",
+            amount: 728.56
+        }, {
+            name: "Melphalan",
+            amount: 727.79
+        }, {
+            name: "Temozolomide",
+            amount: 724.91
+        }, {
+            name: "Cetrimide",
+            amount: 713.53
+        }, {
+            name: "Sodium hyaluronate + Chondroitin",
+            amount: 707.92
+        }, {
+            name: "Tolnaftate",
+            amount: 696.76
+        }, {
+            name: "Ritonavir",
+            amount: 694.99
+        }, {
+            name: "Pindolol + Clopamide",
+            amount: 691.46
+        }, {
+            name: "Hydroxyethyl salicylate + Methyl nicotinate",
+            amount: 681.44
+        }, {
+            name: "Dithranol + Salicylic acid",
+            amount: 679.56
+        }, {
+            name: "Mestranol + Norethisterone",
+            amount: 668.24
+        }, {
+            name: "Co-triamterzide",
+            amount: 660.23
+        }, {
+            name: "Caffeine + Ergotamine",
+            amount: 658.46
+        }, {
+            name: "Fenoprofen",
+            amount: 649.01
+        }, {
+            name: "Naphazoline",
+            amount: 647.68
+        }, {
+            name: "Capecitabine",
+            amount: 631.70
+        }, {
+            name: "Perphenazine",
+            amount: 618.67
+        }, {
+            name: "Hexylresorcinol",
+            amount: 604.24
+        }, {
+            name: "Lutropin alfa",
+            amount: 589.22
+        }, {
+            name: "Hyaluronidase",
+            amount: 573.66
+        }, {
+            name: "Bupivacaine + Glucose",
+            amount: 565.94
+        }, {
+            name: "Cyclopenthiazide",
+            amount: 543.72
+        }, {
+            name: "Sumatra benzoin",
+            amount: 541.71
+        }, {
+            name: "Arginine",
+            amount: 539.62
+        }, {
+            name: "Etanercept",
+            amount: 536.25
+        }, {
+            name: "Tipranavir",
+            amount: 531.57
+        }, {
+            name: "Zoledronic acid",
+            amount: 522.51
+        }, {
+            name: "Lopinavir + Ritonavir",
+            amount: 508.99
+        }, {
+            name: "Aloes + Sumatra benzoin",
+            amount: 503.40
+        }, {
+            name: "Isocarboxazid",
+            amount: 496.53
+        }, {
+            name: "Allantoin + Lidocaine",
+            amount: 495.28
+        }, {
+            name: "Disodium pamidronate",
+            amount: 483.45
+        }, {
+            name: "Mecysteine",
+            amount: 473.97
+        }, {
+            name: "Magnesium carbonate + Magnesium trisilicate + Sodium bicarbonate",
+            amount: 472.44
+        }, {
+            name: "Olodaterol",
+            amount: 465.18
+        }, {
+            name: "Clozapine",
+            amount: 458.04
+        }, {
+            name: "Interferon alfa-2b",
+            amount: 457.32
+        }, {
+            name: "Triamcinolone + Chlortetracycline",
+            amount: 443.84
+        }, {
+            name: "Nelfinavir",
+            amount: 439.89
+        }, {
+            name: "Nicotinic acid + Laropiprant",
+            amount: 438.24
+        }, {
+            name: "Sodium acid phosphate + Sodium bicarbonate",
+            amount: 431.23
+        }, {
+            name: "Almond oil",
+            amount: 412.77
+        }, {
+            name: "Alitretinoin",
+            amount: 409.04
+        }, {
+            name: "Amitriptyline + Perphenazine",
+            amount: 404.49
+        }, {
+            name: "Naloxegol",
+            amount: 391.97
+        }, {
+            name: "Urofollitropin",
+            amount: 390.60
+        }, {
+            name: "Methylnaltrexone bromide",
+            amount: 387.59
+        }, {
+            name: "Zinc oxide + Cod liver oil",
+            amount: 385.39
+        }, {
+            name: "Pamidronate disodium",
+            amount: 366.29
+        }, {
+            name: "Rituximab",
+            amount: 349.26
+        }, {
+            name: "Chlorambucil",
+            amount: 338.22
+        }, {
+            name: "Oxytetracycline + Hydrocortisone",
+            amount: 336.69
+        }, {
+            name: "Sunitinib",
+            amount: 336.30
+        }, {
+            name: "Terlipressin",
+            amount: 332.53
+        }, {
+            name: "Deferasirox",
+            amount: 323.40
+        }, {
+            name: "Lidocaine + Aminoacridine",
+            amount: 321.66
+        }, {
+            name: "Retapamulin",
+            amount: 321.52
+        }, {
+            name: "Proguanil",
+            amount: 318.94
+        }, {
+            name: "Lauromacrogol 400 + Heparinoid",
+            amount: 317.49
+        }, {
+            name: "Tocilizumab",
+            amount: 307.20
+        }, {
+            name: "Piperazine + Sennosides",
+            amount: 307.08
+        }, {
+            name: "Bendroflumethiazide + Potassium",
+            amount: 304.83
+        }, {
+            name: "Oxaliplatin",
+            amount: 300.00
+        }, {
+            name: "Cetylpyridinium",
+            amount: 298.46
+        }, {
+            name: "Iodine + Potassium iodide",
+            amount: 296.80
+        }, {
+            name: "Tigecycline",
+            amount: 291.76
+        }, {
+            name: "Carboprost",
+            amount: 291.22
+        }, {
+            name: "Nandrolone",
+            amount: 290.65
+        }, {
+            name: "Ganirelix",
+            amount: 279.24
+        }, {
+            name: "Moexipril",
+            amount: 257.47
+        }, {
+            name: "Tioguanine",
+            amount: 255.31
+        }, {
+            name: "Idoxuridine",
+            amount: 248.47
+        }, {
+            name: "Methysergide",
+            amount: 241.92
+        }, {
+            name: "Peginterferon alfa-2b",
+            amount: 239.26
+        }, {
+            name: "Connaught strain Bacillus of Calmette-Guerin",
+            amount: 237.69
+        }, {
+            name: "Liquid paraffin + Magnesium hydroxide",
+            amount: 235.35
+        }, {
+            name: "Industrial methylated spirit + Soft soap",
+            amount: 222.15
+        }, {
+            name: "Follitropin alfa + Lutropin alfa",
+            amount: 217.26
+        }, {
+            name: "Paracetamol + Pseudoephedrine",
+            amount: 216.23
+        }, {
+            name: "Polysaccharide-iron complex",
+            amount: 214.99
+        }, {
+            name: "Eucalyptus oil",
+            amount: 200.14
+        }, {
+            name: "Castor oil + Collodion + Colophony",
+            amount: 196.02
+        }, {
+            name: "Magnesium hydroxide",
+            amount: 190.24
+        }, {
+            name: "Epirubicin",
+            amount: 187.10
+        }, {
+            name: "Benzocaine + Cetylpyridinium",
+            amount: 185.41
+        }, {
+            name: "Rhubarb extract + Salicylic acid",
+            amount: 180.97
+        }, {
+            name: "Ichthammol",
+            amount: 180.78
+        }, {
+            name: "Ferrous sulphate + Folic acid",
+            amount: 180.66
+        }, {
+            name: "Benzocaine + Dequalinium",
+            amount: 177.89
+        }, {
+            name: "Interferon alfa-2a",
+            amount: 177.38
+        }, {
+            name: "Acacia",
+            amount: 176.41
+        }, {
+            name: "Co-prenozide",
+            amount: 168.87
+        }, {
+            name: "Ribavirin",
+            amount: 165.30
+        }, {
+            name: "Povidone",
+            amount: 162.31
+        }, {
+            name: "Fosphenytoin",
+            amount: 160.00
+        }, {
+            name: "Chlorhexidine + Tetracaine",
+            amount: 159.59
+        }, {
+            name: "Sodium lauryl ether sulpho-succinate + Sodium lauryl ether sulphate",
+            amount: 158.39
+        }, {
+            name: "Docetaxel",
+            amount: 153.47
+        }, {
+            name: "Liquorice",
+            amount: 149.68
+        }, {
+            name: "Flunisolide",
+            amount: 145.48
+        }, {
+            name: "Methyl salicylate",
+            amount: 138.70
+        }, {
+            name: "Propylene glycol",
+            amount: 137.71
+        }, {
+            name: "Rocuronium",
+            amount: 135.93
+        }, {
+            name: "Fluocortolone hexanoate + Fluocortolone pivalate",
+            amount: 135.58
+        }, {
+            name: "Paraffin hard",
+            amount: 134.94
+        }, {
+            name: "Ciprofloxacin + Dexamethasone",
+            amount: 134.64
+        }, {
+            name: "Clove oil",
+            amount: 123.82
+        }, {
+            name: "Magnesium sulphate",
+            amount: 123.40
+        }, {
+            name: "Didanosine",
+            amount: 118.06
+        }, {
+            name: "Norethisterone enantate",
+            amount: 109.27
+        }, {
+            name: "Benzyl benzoate",
+            amount: 107.77
+        }, {
+            name: "Peginterferon alfa-2a",
+            amount: 107.76
+        }, {
+            name: "Lidocaine + Phenylephrine",
+            amount: 107.20
+        }, {
+            name: "Aldesleukin",
+            amount: 103.60
+        }, {
+            name: "Phentolamine",
+            amount: 101.14
+        }, {
+            name: "Fluocortolone + Fluocortolone hexanoate",
+            amount: 100.84
+        }, {
+            name: "Alum",
+            amount: 100.59
+        }, {
+            name: "Tolnaftate + Benzalkonium",
+            amount: 97.34
+        }, {
+            name: "Cinchocaine",
+            amount: 94.36
+        }, {
+            name: "Cycloserine",
+            amount: 94.30
+        }, {
+            name: "Choriogonadotropin alfa",
+            amount: 94.14
+        }, {
+            name: "Iodine",
+            amount: 94.04
+        }, {
+            name: "Bisoprolol + Aspirin",
+            amount: 90.08
+        }, {
+            name: "Tragacanth",
+            amount: 87.36
+        }, {
+            name: "Capreomycin",
+            amount: 79.76
+        }, {
+            name: "Tartaric acid",
+            amount: 76.32
+        }, {
+            name: "Everolimus",
+            amount: 75.00
+        }, {
+            name: "Pegvisomant",
+            amount: 75.00
+        }, {
+            name: "Edrophonium",
+            amount: 70.36
+        }, {
+            name: "Halogenated phenols + Phenol",
+            amount: 64.65
+        }, {
+            name: "Imipenem + Cilastatin",
+            amount: 58.63
+        }, {
+            name: "Zidovudine",
+            amount: 56.59
+        }, {
+            name: "Remifentanil",
+            amount: 51.17
+        }, {
+            name: "Salicylic acid + Sulfur",
+            amount: 47.90
+        }, {
+            name: "Mifepristone",
+            amount: 47.36
+        }, {
+            name: "Choline salicylate + Glycerol",
+            amount: 46.08
+        }, {
+            name: "Ethanolamine oleate",
+            amount: 45.54
+        }, {
+            name: "Nilotinib",
+            amount: 43.44
+        }, {
+            name: "Saccharin",
+            amount: 37.30
+        }, {
+            name: "Etidronate disodium",
+            amount: 35.73
+        }, {
+            name: "Tolnaftate + Chlorhexidine",
+            amount: 31.36
+        }, {
+            name: "Acetone",
+            amount: 27.48
+        }, {
+            name: "Sorafenib",
+            amount: 26.61
+        }, {
+            name: "Abatacept",
+            amount: 20.16
+        }, {
+            name: "Epoprostenol",
+            amount: 20.11
+        }, {
+            name: "Cellulose",
+            amount: 19.38
+        }, {
+            name: "Chloroform + Morphine",
+            amount: 19.26
+        }, {
+            name: "Ammonia + Ammonium bicarbonate",
+            amount: 18.71
+        }, {
+            name: "Anise oil",
+            amount: 18.55
+        }, {
+            name: "Sapropterin",
+            amount: 18.00
+        }, {
+            name: "Milrinone",
+            amount: 17.99
+        }, {
+            name: "Chalk",
+            amount: 16.73
+        }, {
+            name: "Homatropine",
+            amount: 16.56
+        }, {
+            name: "Hydrotalcite",
+            amount: 14.47
+        }, {
+            name: "Proflavine",
+            amount: 13.10
+        }, {
+            name: "Acetic acid + Honey + Squill",
+            amount: 12.71
+        }, {
+            name: "Flutrimazole",
+            amount: 11.14
+        }, {
+            name: "Telbivudine",
+            amount: 9.31
+        }, {
+            name: "Sulfur",
+            amount: 9.20
+        }, {
+            name: "Etravirine",
+            amount: 7.02
+        }, {
+            name: "Ferric chloride",
+            amount: 6.72
+        }, {
+            name: "Ammonium bicarbonate + Ipecacuanha",
+            amount: 5.89
+        }, {
+            name: "Sodium dihydrogen phosphate dihydrate",
+            amount: 5.52
+        }, {
+            name: "Sodium metabisulfite",
+            amount: 4.44
+        }, {
+            name: "Turpentine oil",
+            amount: 3.80
+        }, {
+            name: "Salicylic acid + Sulphur",
+            amount: 3.45
+        }, {
+            name: "Magnesium trisilicate",
+            amount: 0.96
+        }, {
+            name: "Ammonium bicarbonate",
+            amount: 0.70
+        }, {
+            name: "Hydrochloric acid",
+            amount: 0.45
+        }, {
+            name: "Polihexanide",
+            amount: 0.31
+        }, {
+            name: "Oleic acid",
+            amount: 0.03
+        }, {
+            name: "Gefitinib",
+            amount: 0.01
+        }, {
+            name: "",
+            amount: 0.00
+        }];
+
+        self.totalSpent = ko.observable(0);
+        var total = 0;
+        ko.utils.arrayForEach(self.topDrugsNI, function (item) {
+            total += item.amount;
+        });
+
+        self.totalSpent(total);
+
+    }
+
+    ko.applyBindings(new VM());
+
+
+</script>
+</body>
+</html>
