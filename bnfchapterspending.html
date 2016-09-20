@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Northern Ireland GP Prescription Spending April 2013 - May 2016</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700italic,700,400italic');
+body {
+  background-color: #e9ebee;
+  font-family: Raleway, Helvetica, Arial;
+}
+
+.content-pad {
+  margin-top: 40px;
+}
+
+.navbar {
+  border-radius: 0px;
+}
+
+.bg-faded,
+.bg-faded > a,
+.jumbotron {
+  background-color: #007b78;
+  color: #fff;
+}
+
+.card {
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.card {
+  margin-top: 10px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  background-clip: padding-box;
+}
+
+.card span.card-title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.card .card-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.card .card-image img {
+  border-radius: 2px 2px 0 0;
+  background-clip: padding-box;
+  position: relative;
+  z-index: -1;
+}
+
+.card .card-image span.card-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 16px;
+}
+
+.card .card-content {
+  padding: 16px;
+  border-radius: 0 0 2px 2px;
+  background-clip: padding-box;
+  box-sizing: border-box;
+}
+
+.card .card-content p {
+  margin: 0;
+  color: inherit;
+}
+
+.card .card-content span.card-title {
+  line-height: 48px;
+}
+
+.card .card-action {
+  border-top: 1px solid rgba(160, 160, 160, 0.2);
+  padding: 16px;
+}
+
+.card .card-action a {
+  color: #ffab40;
+  margin-right: 16px;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+}
+
+.card .card-action a:hover {
+  color: #ffd8a6;
+  text-decoration: none;
+}
+
+
+    </style>
+</head>
+<body>
+<div class="container content-pad">
+  <div class="jumbotron">
+    <h2>
+  Northern Ireland GP Prescription Spending Overview
+  </h2>
+    <h3>
+  April 2013 - May 2016
+  </h3>
+  </div>
+  <h2>
+  Health Trusts
+  </h2>
+  <div class="row" data-bind="foreach:$data">
+    <div class="col-md-6">
+      <div class="card">
+
+        <div class="card-content">
+          <h2>
+            £<!--ko text:amount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') --><!--/ko-->
+          </h2>
+
+          <p>
+            <!--ko text:$index()+1 -->
+            <!--/ko-->.
+            <!--ko text:name -->
+            <!--/ko-->Trust
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<script>
+var trusts = [{"name":"CENTRAL NERVOUS SYSTEM","amount":327746418.07},{"name":"CARDIOVASCULAR SYSTEM","amount":146485533.30},{"name":"ENDOCRINE SYSTEM","amount":146210854.07},{"name":"RESPIRATORY SYSTEM","amount":135402536.39},{"name":"NUTRITION AND BLOOD\r","amount":83694436.01},{"name":"GASTRO-INTESTINAL SYSTEM","amount":62185680.07},{"name":"MISCELLANOUS","amount":47742216.65},{"name":"OBSTETRICS,GYNAE+URINARY TRACT DISORDERS","amount":47161024.55},{"name":"SKIN","amount":45618447.62},{"name":"MALIGNANT DISEASE AND IMMUNOSUPPRESSION","amount":31264509.84},{"name":"MUSCULOSKELETAL AND JOINT DISEASES","amount":29944625.57},{"name":"INFECTIONS","amount":29127931.22},{"name":"DRESSINGS","amount":22819817.42},{"name":"STOMA APPLIANCES","amount":15737899.87},{"name":"APPLICANCES","amount":15613430.00},{"name":"EYE","amount":12172032.95},{"name":"EAR, NOSE AND OROPHARYNX","amount":11024281.39},{"name":"ANAESTHESIA\r","amount":7171580.07},{"name":"INCONTINENCE APPLIANCES","amount":3810949.42},{"name":"IMMUNOLOGICAL PRODUCTS AND VACCINES\r","amount":3389029.00},{"name":"OTHER DRUGS AND PREPARATIONS\r","amount":122644.76},{"name":"PREPARATIONS USED IN DIAGNOSIS","amount":16.34}];
+ko.applyBindings(trusts);
+
+
+</script>
+</body>
+</html>
