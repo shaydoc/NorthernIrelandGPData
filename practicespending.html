@@ -46,7 +46,7 @@ Northern Ireland GP Prescriptions by Amount of money spent
         return f.drugName !== '-' && f.drugName !== 'NULL' && f.totalSpend > 100000;
       }).map(function(d) {
         return {
-          name: d.drugName,
+          name: d.drugName.split(' : ')[0],
           size: d.totalSpend < 0 ? 100 : parseInt(d.totalSpend)
         };
       }).value()
