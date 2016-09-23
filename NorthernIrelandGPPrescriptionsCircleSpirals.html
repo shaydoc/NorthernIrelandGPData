@@ -10,7 +10,7 @@ Northern Ireland GP Prescriptions by Amount of money spent
 </head>
 <body>
         <nav class="navbar  navbar-inverse  navbar-fixed-top">
-  <div class="container">
+  <div class="container-fluid">
   <button type="button" class="navbar-toggle"
   data-toggle="collapse"
   data-target=".navbar-collapse"
@@ -32,7 +32,7 @@ Northern Ireland GP Prescriptions by Amount of money spent
        </div>
   </div>
 </nav>
-<div id="body" class="container content-pad">
+<div id="body" class="container-fluid content-pad">
 <div class="jumbotron">
     <h2>
   Northern Ireland GP Prescription Spending Overview
@@ -97,7 +97,7 @@ Northern Ireland GP Prescriptions by Amount of money spent
       return d.size;
     })
 
-  var svg = d3.select("body").append("svg")
+  var svg = d3.select("#body").select('.chart').append("svg")
     .attr("width", diameter)
     .attr("height", diameter)
     .append("g")
