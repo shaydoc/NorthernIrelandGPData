@@ -101,7 +101,7 @@ Northern Ireland GP Prescriptions by Amount of money spent
       return d.size;
     })
 
-  var svg = d3.select("body").append("svg")
+  var svg = d3.select("#body").select(".chart").append("svg")
     .attr("width", diameter)
     .attr("height", diameter)
     .append("g")
