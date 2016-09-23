@@ -9,11 +9,13 @@
 Northern Ireland GP Prescriptions by Amount of money spent 
 </title>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/site.css" />
 </head>
 <body>
 	    <nav class="navbar  navbar-inverse  navbar-fixed-top">
-  <div class="container">
+  <div class="container-fluid">
   <button type="button" class="navbar-toggle"
   data-toggle="collapse"
   data-target=".navbar-collapse"
@@ -35,7 +37,7 @@ Northern Ireland GP Prescriptions by Amount of money spent
        </div>
   </div>
 </nav>
-<div class="container content-pad">
+<div id="body" class="container-fluid content-pad">
  <div class="jumbotron">
     <h2>
   Northern Ireland GP Prescription Spending Overview
@@ -44,7 +46,9 @@ Northern Ireland GP Prescriptions by Amount of money spent
   Individual Drug Spending April 2013 - May 2016
   </h3>
   </div>
-<a href="index.html" class="btn btn-success">View as a Table</a>
+ 
+ <div class="chart"></div>
+  
 </div>
 
 <script>
@@ -3818,7 +3822,7 @@ var bubble = d3.layout.pack()
   .size([diameter, diameter])
   .padding(1.5);
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#body").select(".chart").append("svg")
   .attr("width", diameter)
   .attr("height", diameter)
   .attr("class", "bubble");
