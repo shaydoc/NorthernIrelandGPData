@@ -6,8 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Northern Ireland GP Prescription Spending April 2013 - May 2016</title>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+     
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/site.css" />
 </head>
@@ -45,62 +46,27 @@
   </h3>
   </div>
  
-  <div class="row" >
-
+  <div class="row">
     <div class="col-md-6">
-      <h2>Top Spending by Trust</h2>  
-      <!-- ko foreach:trusts -->
-      <div class="card">
-   
-        <div class="card-content">
-          <h2>
-            £<!--ko text:amount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') --><!--/ko-->
-          </h2>
-
-          <p>
-            <!--ko text:$index()+1 -->
-            <!--/ko-->.
-            <!--ko text:name -->
-            <!--/ko-->&nbsp;Trust
-
-          </p>
-
-        </div>
-
-      </div>
-     <!-- /ko -->
+     <h2>
+  Health Trusts
+  </h2>
+      <canvas id="trusts" width="600" height="600"></canvas>
     </div>
-    <div class="col-md-6">
-     <h2>Top Spending by Drug Classification</h2>  
-     <!-- ko foreach:bnfChapters -->
-      <div class="card">
-
-        <div class="card-content">
-          <h2>
-            £<!--ko text:amount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') --><!--/ko-->
-          </h2>
-
-          <p>
-            <!--ko text:$index()+1 -->
-            <!--/ko-->.
-            <!--ko text:name -->
-            <!--/ko-->
-
-          </p>
-
-        </div>
-
-      </div>
-     <!-- /ko -->
+      <div class="col-md-6">
+       <h2>
+  BNF Chapters
+  </h2>
+      <canvas id="bnfChapters" width="600" height="600"></canvas>
     </div>
   </div>
+  
 </div>
-
-
-<script>
-  function IndexVM(){
-      var self = this;
-self.trusts = [{
+ 
+ 
+ </div>
+  <script>
+  var trusts = [{
   name: "Northern",
   amount: 296074131.40
 }, {
@@ -116,21 +82,146 @@ self.trusts = [{
   name: "Western",
   amount: 197999288.54
 }];
- 
-self.bnfChapters = [{"name":"CENTRAL NERVOUS SYSTEM","amount":327746418.07},{"name":"CARDIOVASCULAR SYSTEM","amount":146485533.30},{"name":"ENDOCRINE SYSTEM","amount":146210854.07},{"name":"RESPIRATORY SYSTEM","amount":135402536.39},{"name":"NUTRITION AND BLOOD\r","amount":83694436.01},{"name":"GASTRO-INTESTINAL SYSTEM","amount":62185680.07},{"name":"MISCELLANOUS","amount":47742216.65},{"name":"OBSTETRICS,GYNAE+URINARY TRACT DISORDERS","amount":47161024.55},{"name":"SKIN","amount":45618447.62},{"name":"MALIGNANT DISEASE AND IMMUNOSUPPRESSION","amount":31264509.84},{"name":"MUSCULOSKELETAL AND JOINT DISEASES","amount":29944625.57},{"name":"INFECTIONS","amount":29127931.22},{"name":"DRESSINGS","amount":22819817.42},{"name":"STOMA APPLIANCES","amount":15737899.87},{"name":"APPLICANCES","amount":15613430.00},{"name":"EYE","amount":12172032.95},{"name":"EAR, NOSE AND OROPHARYNX","amount":11024281.39},{"name":"ANAESTHESIA\r","amount":7171580.07},{"name":"INCONTINENCE APPLIANCES","amount":3810949.42},{"name":"IMMUNOLOGICAL PRODUCTS AND VACCINES\r","amount":3389029.00},{"name":"OTHER DRUGS AND PREPARATIONS\r","amount":122644.76},{"name":"PREPARATIONS USED IN DIAGNOSIS","amount":16.34}];
+
+
+var bnfChapters = [{
+  "name": "CENTRAL NERVOUS SYSTEM",
+  "amount": 327746418.07
+}, {
+  "name": "CARDIOVASCULAR SYSTEM",
+  "amount": 146485533.30
+}, {
+  "name": "ENDOCRINE SYSTEM",
+  "amount": 146210854.07
+}, {
+  "name": "RESPIRATORY SYSTEM",
+  "amount": 135402536.39
+}, {
+  "name": "NUTRITION AND BLOOD\r",
+  "amount": 83694436.01
+}, {
+  "name": "GASTRO-INTESTINAL SYSTEM",
+  "amount": 62185680.07
+}, {
+  "name": "MISCELLANOUS",
+  "amount": 47742216.65
+}, {
+  "name": "OBSTETRICS,GYNAE+URINARY TRACT DISORDERS",
+  "amount": 47161024.55
+}, {
+  "name": "SKIN",
+  "amount": 45618447.62
+}, {
+  "name": "MALIGNANT DISEASE AND IMMUNOSUPPRESSION",
+  "amount": 31264509.84
+}, {
+  "name": "MUSCULOSKELETAL AND JOINT DISEASES",
+  "amount": 29944625.57
+}, {
+  "name": "INFECTIONS",
+  "amount": 29127931.22
+}, {
+  "name": "DRESSINGS",
+  "amount": 22819817.42
+}, {
+  "name": "STOMA APPLIANCES",
+  "amount": 15737899.87
+}, {
+  "name": "APPLICANCES",
+  "amount": 15613430.00
+}, {
+  "name": "EYE",
+  "amount": 12172032.95
+}, {
+  "name": "EAR, NOSE AND OROPHARYNX",
+  "amount": 11024281.39
+}, {
+  "name": "ANAESTHESIA",
+  "amount": 7171580.07
+}, {
+  "name": "INCONTINENCE APPLIANCES",
+  "amount": 3810949.42
+}, {
+  "name": "IMMUNOLOGICAL PRODUCTS AND VACCINES\r",
+  "amount": 3389029.00
+}, {
+  "name": "OTHER DRUGS AND PREPARATIONS\r",
+  "amount": 122644.76
+}, {
+  "name": "PREPARATIONS USED IN DIAGNOSIS",
+  "amount": 16.34
+}];
+
+
+var trustsData = {
+  labels: [
+    "Northern Trust",
+    "Belfast Trust",
+    "South Eastern Trust",
+    "Southern Trust",
+    "Western Trust"
+  ],
+  datasets: [{
+    data: [296074131, 279202946, 221817752, 218901566, 197999288],
+    backgroundColor: [
+      "#FF6384",
+      "#4BC0C0",
+      "#FFCE56",
+      "#C0CFED",
+      "#36A2EB"
+    ],
+    hoverBackgroundColor: [
+      "#FF6384",
+      "#4BC0C0",
+      "#FFCE56",
+      "#C0CFED",
+      "#36A2EB"
+    ]
+  }]
 };
 
-ko.applyBindings(new IndexVM());
-</script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+} 
+var bnfColors = [];
+for(i = 0; i < 23; i++) {
+    
+    bnfColors.push(getRandomColor());
+}
 
-  ga('create', 'UA-84653625-1', 'auto');
-  ga('send', 'pageview');
+var bnfData = {
+ labels: _.pluck(bnfChapters,'name'),
+  datasets:[{
+  label:'BNF Chapter',
+   data:  _.pluck(bnfChapters,'amount'),
+   backgroundColor:bnfColors
+  }]
+}
 
-</script>
+
+
+
+var trustsElement = document.getElementById("trusts");
+var bnfChaptersElement = document.getElementById("bnfChapters");
+var ctxTrusts = trustsElement.getContext("2d");
+var ctxbnfChapters = bnfChaptersElement.getContext("2d");
+
+// And for a doughnut chart
+var myDoughnutChart = new Chart(ctxTrusts, {
+  type: 'polarArea',
+  data: trustsData 
+});
+
+// And for a doughnut chart
+var bnfChapters = new Chart(ctxbnfChapters, {
+  type: 'horizontalBar',
+  data: bnfData
+});
+  </script>
 </body>
 </html>
