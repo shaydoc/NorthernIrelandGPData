@@ -109,8 +109,10 @@ Northern Ireland GP Prescriptions by Amount of money spent
     })
 
   var svg = d3.select("#body").select('.chart').append("svg")
-    .attr("width", diameter)
-    .attr("height", diameter)
+     .attr("viewBox", "0 0 960 960")
+          .attr("preserveAspectRatio", "xMinYMin meet")  
+  //.attr("width", diameter)
+    //.attr("height", diameter)
     .append("g")
     .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
