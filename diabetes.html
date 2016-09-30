@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Northern Ireland Diabetes Prescriptions Per Patient</title> 
+    <style>
+        @@import url('https://shaydoc.github.io/NorthernIrelandGPData/css/site.css');
+  
+  
+         #chart {
+           position: relative;
+           cursor: pointer;
+         }
+ 
+         #info {
+           color: rgb(140, 140, 140);
+           padding: 20px 0 3px;
+         }
+ 
+         #info h1 {
+           font: normal 200 18px/1.6 DIN, Helvetica;
+           letter-spacing: 1px;
+           text-transform: uppercase;
+           padding: 0;
+           margin: 0;
+         }
+ 
+         #info p {
+           font: normal 200 11px/1.6 DIN, Helvetica;
+           padding: 0;
+           margin: 0;
+         }
+ 
+         #info #log {
+           margin-top: 1em;
+           font-weight: bold
+         }
+ 
+         svg {
+           background: rgb(238, 238, 238);
+           /*url(monster.png) 850px 160px no-repeat; */
+           /*shape-rendering: crispEdges;*/
+         }
+ 
+         #soa {
+           stroke: white;
+           stroke-width: 0.5;
+           fill: rgb(238, 238, 238);
+           stroke-linejoin: bevel;
+         }
+ 
+         #lgd {
+           stroke: white;
+           stroke-width: 2;
+           fill: none;
+           stroke-linejoin: bevel;
+         }
+ 
+         .YlGnBu * {
+           -webkit-transition: all .5s ease-in-out;
+         }
+ 
+         .YlGnBu .q0-9 {
+           fill: rgb(255, 255, 217)
+         }
+ 
+         .YlGnBu .q1-9 {
+           fill: rgb(237, 248, 177)
+         }
+ 
+         .YlGnBu .q2-9 {
+           fill: rgb(199, 233, 180)
+         }
+ 
+         .YlGnBu .q3-9 {
+           fill: rgb(127, 205, 187)
+         }
+ 
+         .YlGnBu .q4-9 {
+           fill: rgb(65, 182, 196)
+         }
+ 
+         .YlGnBu .q5-9 {
+           fill: rgb(29, 145, 192)
+         }
+ 
+         .YlGnBu .q6-9 {
+           fill: rgb(34, 94, 168)
+         }
+ 
+         .YlGnBu .q7-9 {
+           fill: rgb(37, 52, 148)
+         }
+ 
+         .YlGnBu .q8-9 {
+           fill: rgb(8, 29, 88)
+         }
+ 
+         .slide {
+           width: 60px;
+           height: 34px;
+           background: rgb(238, 238, 238);
+           margin: 0;
+           padding: 0;
+           text-align: center;
+           font: normal 200 12px/34px DIN, Helvetica;
+           display: inline-block;
+           cursor: pointer;
+         }
+ 
+         .active {
+           background: rgb(180, 180, 180);
+           color: white;
+         }
+
+    </style>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v2.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css">
+
+</head>
+<body>
+    <div class="container content-pad">
+
+        <div class="jumbotron">
+             
+                <h2>
+                    Prescriptions for Diabetes in Northern Ireland 
+                </h2>
+                <h4>GP Practices are mapped to Super Output Areas.</h4>
+                <h4>Map Scale is Total items prescibed per Registered Patient</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-pills" data-bind="foreach:periods" >
+                    <li data-bind="css:{active: $parent.period() === $data}"><a href="#" data-bind="click:$parent.showData">April <!-- ko text: $data --><!-- /ko --></a></li>
+                </ul>
+                <div class="pull-right">
+                    GIS Data source: <a href="https://mapit.mysociety.org/" target="_blank">MapIt: UK</a>
+                </div>
+            </div>
+
+        </div>
+   
+        <div class="row">
+            <div  class="col-md-6">
+                <h4 id="log"></h4>
+               
+            </div>
+            <div class="col-md-6">
+               
+            </div>
+        </div>
+        <div class="row">
+            <div id="chart" class="col-md-12">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var lgdJSON = 'https://shaydoc.github.io/NorthernIrelandGPData/json/lgd.json';
+        var soaJSON = 'https://shaydoc.github.io/NorthernIrelandGPData/json/soa.json';
+        var drugJSON = '';
+        // TODO tidy up, comment
+        var data, year;
+        var w = 1000;
+        var h = 800;
+        var proj = d3.geo.mercator();
+        var path = d3.geo.path().projection(proj);
+
+        var t = proj.translate();
+        var s = proj.scale();
+        var t = proj.translate([2776, 22236]);
+        var s = proj.scale(120000);
+
+
+        var buckets = 9,
+          colors = ["#ffffd9", "#edf8b1", "#c7e9b4", "#7fcdbb", "#41b6c4", "#1d91c0", "#225ea8", "#253494", "#de2d26"]; // "#081d58" alternatively colorbrewer.YlGnBu[9]
+        var colorScale = function () { }
+
+        var map = d3.select('#chart').append('svg')
+          .attr('width', w)
+          .attr('height', h)
+          .append("g")
+          .attr("transform", "translate(0,0)")
+          .call(d3.behavior.zoom().scaleExtent([1, 100]).on("zoom", zoom))
+          .append("g");
+
+        var soa = map.append('g')
+          .attr('id', 'soa')
+          .attr('class', 'YlGnBu');
+
+
+        var lgd = map.append('g')
+          .attr('id', 'lgd');
+
+        var soaRecs = null;
+        var lgdRecs = null;
+        d3.json(soaJSON, function (json) {
+            soaRecs = json;
+            soa.selectAll('path') // select all the current path nodes
+              .data(json.features) // bind these to the features array in json
+              .enter().append('path') // if not enough elements create a new path
+              //.attr('class', data ? quantify : null)
+              .style("fill", data ? quantify2 : null)
+              .attr('d', path) // transform the supplied jason geo path to svg
+              .on('mouseover', function (d, i) {
+                  //console.log(path.centroid(d));
+                  if (data) {
+                      var tmp = data.filter(function (item) {
+                          return item.soa === d.soa_code;
+                      });
+                      var noOfItems = tmp.length > 0 ? tmp[0].totalItemsPerPatient : 0;
+                      d3.select('#log').text(d.soa.replace(/_/g, ' ') + ': ' + noOfItems + ' prescriptions per patient');
+
+                  }
+              })
+        });
+
+        d3.json(lgdJSON, function (json) {
+            lgdRecs = json;
+            lgd.selectAll('path') // select all the current path nodes
+              .data(json.features) // bind these to the features array in json
+              .enter().append('svg:path') // if not enough elements create a new path
+              .attr('d', path) // transform the supplied jason geo path to svg
+        });
+
+
+        function quantify(d) {
+            year = year || 0;
+            var f = data.filter(function (item) {
+                return item.soa === d.soa_code;
+            });
+
+            return 'q' + Math.min(8, ~~(((Math.log(f.length > 0 ? f[0].totalItemsPerPatient*10000 : 0) - 1) / 3.60) * 8)) + '-9';
+        }
+
+        function quantify2(d) {
+            year = year || 0;
+            var f = data.filter(function (item) {
+                return item.soa === d.soa_code;
+            });
+
+            return colorScale(f.length > 0 ? f[0].totalItemsPerPatient*10000 : 0);
+        }
+
+        function zoom() {
+            map.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+        }
+
+
+        function DimensionVM() {
+            var self = this;
+            self.scaleSet = false;
+            self.periods = [2013, 2014, 2015, 2016];
+            self.period = ko.observable(2013);
+            self.showData = function (year) {
+                self.period(year);
+                drugJSON = 'https://shaydoc.github.io/NorthernIrelandGPData/json/diabetesApril' + year + '.json';
+              
+                         d3.json(drugJSON,function (json) {
+                            data = json;
+                            if (self.scaleSet == false) {
+                                colorScale = d3.scale.quantile()
+                                    .domain([0, buckets - 1, d3.max(data, function (d) {
+                                        return d.totalItemsPerPatient*10000;
+                                    })])
+                                    .range(colors);
+                            }
+                            self.scaleSet = true;
+
+                            soa.selectAll('path').style("fill", quantify2);
+
+                        
+
+                        });
+
+                    
+                       
+                    
+                }
+            self.showData(2013);
+        }
+
+        ko.applyBindings(new DimensionVM());
+
+    </script>
+</body>
+</html>
