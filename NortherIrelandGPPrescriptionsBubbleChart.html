@@ -3826,8 +3826,10 @@ var bubble = d3.layout.pack()
   .padding(1.5);
 
 var svg = d3.select("#body").select(".chart").append("svg")
-  .attr("width", diameter)
-  .attr("height", diameter)
+          .attr("viewBox", "0 0 960 960")
+          .attr("preserveAspectRatio", "xMinYMin meet")
+  //.attr("width", diameter)
+  //.attr("height", diameter)
   .attr("class", "bubble");
 
 var vm = new VM();
