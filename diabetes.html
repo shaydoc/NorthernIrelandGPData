@@ -115,6 +115,19 @@
            background: rgb(180, 180, 180);
            color: white;
          }
+	    
+	     div.tooltip {	
+                position: absolute;			
+                text-align: left;			
+                width: 160px;					
+                height: 60px;					
+                padding: 2px;				
+                font-weight:bold;	
+                background: #f7f7f7;	
+                border: 1px;		
+                border-radius: 8px;			
+                pointer-events: none;			
+}
 
     </style>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -227,6 +240,12 @@
 
         var soaRecs = null;
         var lgdRecs = null;
+	    
+	 // Define the div for the tooltip
+        var div = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 1);
+
         d3.json(soaJSON, function (json) {
             soaRecs = json;
             soa.selectAll('path') // select all the current path nodes
@@ -235,17 +254,28 @@
               //.attr('class', data ? quantify : null)
               .style("fill", data ? quantify2 : null)
               .attr('d', path) // transform the supplied jason geo path to svg
-              .on('mouseover', function (d, i) {
+                .on('mouseover', function (d, i) {
                   //console.log(path.centroid(d));
                   if (data) {
                       var tmp = data.filter(function (item) {
                           return item.soa === d.soa_code;
                       });
                       var noOfItems = tmp.length > 0 ? tmp[0].totalItemsPerPatient : 0;
-                      d3.select('#log').text(d.soa.replace(/_/g, ' ') + ': ' + noOfItems + ' prescriptions per patient');
+                      //d3.select('#log').text(d.soa.replace(/_/g, ' ') + ': ' + noOfItems + ' prescriptions per patient');
+
+                      div.transition()
+                .duration(500)
+                .style("opacity", 0.95);
+                      div.html(d.soa.replace(/_/g, ' ') + ': ' + noOfItems + ' prescriptions per patient')
+                          .style("left", (d3.event.pageX) + "px")
+                          .style("top", (d3.event.pageY) + "px");
 
                   }
-              })
+              }).on("mouseout", function (d) {
+                  div.transition()
+                      .duration(500)
+                      .style("opacity", 0);
+              });
         });
 
         d3.json(lgdJSON, function (json) {
