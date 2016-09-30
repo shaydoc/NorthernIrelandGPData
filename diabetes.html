@@ -210,8 +210,8 @@
         var colorScale = function () { }
 
         var map = d3.select('#chart').append('svg')
-          .attr('width', w)
-          .attr('height', h)
+         .attr("viewBox", "0 0 1000 800")
+         .attr("preserveAspectRatio", "xMinYMin meet")
           .append("g")
           .attr("transform", "translate(0,0)")
           .call(d3.behavior.zoom().scaleExtent([1, 100]).on("zoom", zoom))
