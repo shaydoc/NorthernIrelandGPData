@@ -320,7 +320,7 @@
             self.period = ko.observable(2013);
             self.showData = function (year) {
                 self.period(year);
-                drugJSON = 'https://shaydoc.github.io/NorthernIrelandGPData/json/diabetesApril' + year + '.json';
+                drugJSON = 'https://opendatani.azurewebsites.net/api/soa/patient/bnfchapter/6/1/' + year + '/4';
               
                          d3.json(drugJSON,function (json) {
                             data = json;
