@@ -261,12 +261,15 @@
                           return item.soa === d.soa_code;
                       });
                       var noOfItems = tmp.length > 0 ? tmp[0].totalItemsPerPatient : 0;
+		      var totItems =  tmp.length > 0 ? tmp[0].totalItems : 0;
+		      var totQty=  tmp.length > 0 ? tmp[0].totalQuantity : 0;
+		      var totCost = tmp.length > 0 ? tmp[0].totalActualCost : 0;
                       //d3.select('#log').text(d.soa.replace(/_/g, ' ') + ': ' + noOfItems + ' prescriptions per patient');
 
                       div.transition()
                 .duration(500)
                 .style("opacity", 0.95);
-                      div.html(d.soa.replace(/_/g, ' ') + ': ' + noOfItems + ' prescriptions per patient')
+                      div.html('<ul><li>'+d.soa.replace(/_/g, ' ') + ': ' + noOfItems + ' prescriptions per patient</li><li>Total Items: ' + totItems +'</li><li> Total Quantity: '+ totQty + '</li><li>Total Cost(£): '+ totCost + '</li></ul>')
                           .style("left", (d3.event.pageX) + "px")
                           .style("top", (d3.event.pageY) + "px");
 
