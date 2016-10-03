@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Northern Ireland Diabetes Prescriptions across GP practices</title> 
+    <style>
+        @import url('https://shaydoc.github.io/NorthernIrelandGPData/css/site.css');
+  
+        
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+#chart {
+  font-size: 0.8em;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+  font: 10px sans-serif;
+}
+
+.focus circle {
+  fill: none;
+  stroke: steelblue;
+}
+
+
+  
+         
+    </style>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+   
+</head>
+<body>
+      <nav class="navbar  navbar-inverse  navbar-fixed-top">
+  <div class="container-fluid">
+  <button type="button" class="navbar-toggle"
+  data-toggle="collapse"
+  data-target=".navbar-collapse"
+  >
+  <span class="sr-only"> Toggle navigation</span>
+  <span class="icon-bar"> </span>
+  <span class="icon-bar"> </span>
+  <span class="icon-bar"> </span>
+  </button>
+    <a class="navbar-brand" href="index.html"><i class="fa fa-home"></i></a>
+   <a class="navbar-brand" href="https://github.com/shaydoc/NorthernIrelandGPData" target="_blank"><i class="fa fa-github"></i></a>
+<a class="navbar-brand" href="https://twitter.com/shaydmusic" target="_blank"><i class="fa fa-twitter"></i></a>
+<a class="navbar-brand" href="https://www.linkedin.com/pub/shay-doherty/7/45b/7bb" target="_blank"><i class="fa fa-linkedin"></i></a>
+       <div class="navbar-collapse collapse">
+           <ul class="nav navbar-nav navbar-right">
+		     <li> <a href="NorthernIrelandGPPrescriptionsCircleSpirals.html">BNF Chapter Chart</a> </li>
+	             <li> <a href="practicespending.html">GP Surgery Chart</a> </li> 
+	             <li> <a href="NortherIrelandGPPrescriptionsBubbleChart.html">Drug Chart</a> </li> 
+		   <li> <a href="diabetes.html">Diabetes Map</a> </li> 
+		   </ul>
+       </div>
+  </div>
+</nav>
+	
+   <div class="container content-pad" data-bind="with:practices">
+  <div>
+    <h2>
+Diabetes Prescriptions over time by GP Practice 
+</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-content">
+          <h4>
+<!-- ko text:$data[$parent.index()].practiceName -->
+<!-- /ko -->,<!-- ko text:$data[$parent.index()].address1 -->
+<!-- /ko -->
+</h4>
+          <h5>
+<!-- ko text:$data[$parent.index()].address2 -->
+<!-- /ko -->,
+<!-- ko text:$data[$parent.index()].address3 -->
+<!-- /ko -->,<!-- ko text:$data[$parent.index()].postcode -->
+<!-- /ko -->
+</h5>
+
+          <button type="button" class="btn btn-sm btn-primary pull-left" data-bind="click:$parent.previous, visible:$parent.index() > 0">
+            << Previous </button>
+              <button type="button" class="btn btn-sm btn-primary pull-right" data-bind="click:$parent.next">
+                Next >>
+              </button>
+              <div class="clearfix">
+
+              </div>
+              <div id="chart">
+
+              </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+</div>
+<footer>
+  <hr/>
+</footer>
+
+
+
+    <script>
+       function type(d) {
+  d.date = formatDate.parse(new Date(d.year, d.month - 1));
+  d.totalItems = d.totalItems;
+  return d;
+}
+
+function dVM() {
+  var self = this;
+
+  var margin = {
+      top: 20,
+      right: 20,
+      bottom: 30,
+      left: 50
+    },
+    width = 960 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+
+  self.results = ko.observable();
+
+  self.practices = ko.observable();
+  self.selectedPractice = ko.observable('1');
+
+  // self.results.subscribe(function(res){
+  // if (res && res.results){
+  //  self.practices( _.chain(res.results).pluck('pracNo').uniq().sortBy(function(i){ return parseInt(i);}).value());
+  //}  
+  //});
+
+  self.index = ko.observable(0);
+  self.previous = function() {
+    self.index(self.index() - 1);
+    self.selectedPractice(self.practices()[self.index()].pracNo)
+    self.drawGraph();
+
+  }
+  self.next = function() {
+    self.index(self.index() + 1);
+    self.selectedPractice(self.practices()[self.index()].pracNo)
+    self.drawGraph();
+
+  }
+
+  self.drawGraph = function() {
+    var data = _.chain(self.results().results).filter(function(item) {
+        return item.pracNo === self.selectedPractice()
+      }).sortBy(function(i) {
+        var pad = parseInt(i.month) < 10 ? '0' : '';
+        return i.year + pad + i.month;
+      })
+      //.rest(10)
+      //.first(20)
+      .value();
+
+    var parseDate = d3.time.format("%d-%b-%y").parse,
+    bisectDate = d3.bisector(function(d) { return new Date(d.year, d.month-1); }).left,
+    formatValue = d3.format(",.2f"),
+    formatCurrency = function(d) { return "$" + formatValue(d); };
+    $('#chart').empty();
+    var svg = d3.select("#chart").append("svg")
+     .attr("viewBox", "0 0 1000 400")
+         .attr("preserveAspectRatio", "xMinYMin meet")
+      //.attr("width", width + margin.left + margin.right)
+      //.attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+    var formatDate = d3.time.format("%b-%y");
+    
+    var x = d3.time.scale()
+      .range([0, width]);
+
+    var y = d3.scale.linear()
+      .range([height, 0]);
+
+    var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left");
+
+    var line = d3.svg.line()
+      .x(function(d) {
+        return x(new Date(d.year, d.month - 1));
+      })
+      .y(function(d) {
+        return y(d.totalItems);
+      });
+
+
+
+    x.domain(d3.extent(data, function(d) {
+      return new Date(d.year, d.month - 1);
+    }));
+    y.domain(d3.extent(data, function(d) {
+      return d.totalItems;
+    }));
+
+    svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+    svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Total Items Prescribed");
+
+
+    svg.append("path")
+      .datum(data)
+      .attr("class", "line")
+      .attr("d", line);
+      
+      var focus = svg.append("g")
+      .attr("class", "focus")
+      .style("display", "none");
+
+  focus.append("circle")
+      .attr("r", 4.5);
+
+  focus.append("text")
+      .attr("x", 9)
+      .attr("dy", ".35em");
+
+  svg.append("rect")
+      .attr("class", "overlay")
+      .attr("width", width)
+      .attr("height", height)
+      .on("mouseover", function() { focus.style("display", null); })
+      .on("mouseout", function() { focus.style("display", "none"); })
+      .on("mousemove", mousemove);
+
+  function mousemove() {
+    var x0 = x.invert(d3.mouse(this)[0]),
+        i = bisectDate(data, x0, 1),
+        d0 = data[i - 1],
+        d1 = data[i],
+        d = x0 - new Date(d0.year, d0.month - 1) > new Date(d1.year, d1.month - 1) - x0 ? d1 : d0;
+    focus.attr("transform", "translate(" + x(new Date(d.year, d.month - 1)) + "," + y(d.totalItems) + ")");
+    focus.select("text").text(  formatDate(new Date(d.year, d.month-1)) + ': '+ d.totalItems);
+  }
+  }
+
+
+
+
+  //https://bl.ocks.org/mbostock/3884955
+
+  //$.get('https://opendatani.azurewebsites.net/api/diabetes').done(self.//results);
+  //$.get('https://opendatani.azurewebsites.net/api/practices').done(self//.practices).done(self.drawGraph);
+
+
+  $.when($.get('https://opendatani.azurewebsites.net/api/diabetes'), $.get('https://opendatani.azurewebsites.net/api/practices')).done(function(d, p) {
+    self.results(d[0]);
+    self.practices(p[0]);
+    self.drawGraph();
+
+  });
+
+
+
+}
+
+ko.applyBindings(new dVM());
+
+
+
+    </script>
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-84653625-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
+
