@@ -103,7 +103,10 @@ Diabetes Prescriptions over time by GP Practice
 <!-- /ko -->,<!-- ko text:$data[$parent.index()].postcode -->
 <!-- /ko -->
 </h5>
-
+<h5>Registered Patients at Jan 2016:
+<!-- ko text:$parent.regPat -->
+<!-- /ko -->
+</h5>
           <button type="button" class="btn btn-sm btn-primary pull-left" data-bind="click:$parent.previous, visible:$parent.index() > 0">
             << Previous </button>
               <button type="button" class="btn btn-sm btn-primary pull-right" data-bind="click:$parent.next">
@@ -152,7 +155,7 @@ function dVM() {
 
 
   self.results = ko.observable();
-
+  self.regPat= ko.observable();
   self.practices = ko.observable();
   self.selectedPractice = ko.observable('1');
 
@@ -187,6 +190,7 @@ function dVM() {
       //.first(20)
       .value();
 
+    self.regPat(data[0].registeredPatients);
     var parseDate = d3.time.format("%d-%b-%y").parse,
     bisectDate = d3.bisector(function(d) { return new Date(d.year, d.month-1); }).left,
     formatValue = d3.format(",.2f"),
