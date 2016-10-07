@@ -296,6 +296,15 @@ var bnfChapters = new Chart(ctxbnfChapters, {
 	  function gpVM(){
            var self = this;
            self.practices = ko.observable();
+		   self.practiceUrl = function (prac) {
+            return '/Home/Practice/'
+                    + prac.pracNo
+                    + '-' + prac.practiceName.replace(/\W/g, '-')
+                    + '-' + prac.address1.replace(/\W/g, '-')
+                    + '-' + prac.address2.replace(/\W/g, '-')
+                    + '-' + prac.address3.replace(/\W/g, '-');
+        }
+
 $.get('https://opendatani.azurewebsites.net/api/practices').done(function (res) {
             ko.utils.arrayForEach(res, function (item) {
                 item.practiceUrl = self.practiceUrl(item);
