@@ -296,6 +296,22 @@ var bnfChapters = new Chart(ctxbnfChapters, {
 	  function gpVM(){
            var self = this;
            self.practices = ko.observable();
+        self.filter = ko.observable();
+
+        
+        self.filteredPractices = ko.computed(function () {
+            if (self.filter()) {
+                return ko.utils.arrayFilter(self.practices(), function (item) {
+                    return (item.practiceName.toLowerCase().indexOf(self.filter().toLowerCase()) >= 0 || item.address1.toLowerCase().indexOf(self.filter().toLowerCase()) >= 0
+                     || item.address2.toLowerCase().indexOf(self.filter().toLowerCase()) >= 0
+                      || item.address3.toLowerCase().indexOf(self.filter().toLowerCase()) >= 0
+                    );
+                });
+            }
+
+            return self.practices();
+
+        }, self);
 		   self.practiceUrl = function (prac) {
             return '/Home/Practice/'
                     + prac.pracNo
