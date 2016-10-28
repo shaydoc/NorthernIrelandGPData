@@ -321,7 +321,7 @@ var bnfChapters = new Chart(ctxbnfChapters, {
                     + '-' + prac.address3.replace(/\W/g, '-');
         }
 
-$.get('https://opendatani.azurewebsites.net/api/practices').done(function (res) {
+$.get('https://shaydoc.github.io/NorthernIrelandGPData/json/practices.json').done(function (res) {
             ko.utils.arrayForEach(res, function (item) {
                 item.practiceUrl = self.practiceUrl(item);
             });
